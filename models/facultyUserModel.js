@@ -32,6 +32,16 @@ module.exports ={
 				callback(null);
 			}
 		});
+	},
+	getPassword : function(id,callback) {
+		var sql ="select password from user where user_id_name=?";
+		db.getResult(sql, [id], function(result){
+			if(result.length > 0){
+				callback(result[0]);
+			}else{
+				callback(null);
+			}
+		});
 	}
 
 }

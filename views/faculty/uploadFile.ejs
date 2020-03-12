@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard </title>
+    <title>Upload Files </title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -60,7 +60,7 @@
               </a>
             </nav>
           </div>
-          <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+          <form  class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
             <div class="input-group input-group-seamless ml-3">
               <div class="input-group-prepend">
                 <div class="input-group-text">
@@ -72,60 +72,72 @@
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/home">
+                <a class="nav-link active" href="/Teacherhome">
                   <i class="material-icons">edit</i>
                   <span>Dashboard</span>
                 </a>
               </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link " href="/AdminTeacherReg">
+                  <i class="material-icons">note_add</i>
+                  <span>Add Faculty</span>
+                </a>
+              </li> -->
+              <!-- <li class="nav-item">
+                <a class="nav-link " href="/AdminTeacherDetails">
+                  <i class="material-icons">vertical_split</i>
+                  <span>Faculty List</span>
+                </a>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link " href="/studentReg">
+                <a class="nav-link " href="/TeacherStudentReg">
                   <i class="material-icons">note_add</i>
                   <span>Add Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/studentDetails">
+                <a class="nav-link " href="/TeacherStudentDetails">
                   <i class="material-icons">vertical_split</i>
                   <span>Student List</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/studentApproval">
+                <a class="nav-link " href="/TeacherStudentApproval">
                   <i class="material-icons">table_chart</i>
                   <span>Approve Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/topicAdd">
+                <a class="nav-link " href="/TeacherTopicAdd">
                   <i class="material-icons">table_chart</i>
                   <span>Add Topic</span>
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link " href="/progressUpdate">
+                <a class="nav-link " href="/TeacherProgressUpdate">
                   <i class="material-icons">table_chart</i>
                   <span>Progress Update</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/uploadFiles">
+                <a class="nav-link " href="/TeacherUploadFiles">
                   <i class="material-icons">table_chart</i>
                   <span>Upload files</span>
                 </a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link " href="/viewTopic">
+                <a class="nav-link " href="/TeacherViewTopic">
                   <i class="material-icons">person</i>
                   <span>View Topic</span>
                 </a>
               </li> 
-              <li class="nav-item">
-                <a class="nav-link " href="/semesterDetails">
+              <!-- <li class="nav-item">
+                <a class="nav-link " href="/AdminApprovalExternal">
                   <i class="material-icons">person</i>
-                  <span>Semester Details</span>
+                  <span>Approve External</span>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </aside>
@@ -185,10 +197,10 @@
                     <span class="d-none d-md-inline-block"><%= name%></span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="/profile">
+                    <a class="dropdown-item" href="/TeacherProfile">
                       <i class="material-icons">&#xE7FD;</i> Profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/changePassword">
+                    <a class="dropdown-item" href="/TeacherChangePassword">
                       <i class="material-icons">&#xE7FD;</i> Change Password</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="/logout">
@@ -203,27 +215,37 @@
               </nav>
             </nav>
           </div>
+
           <!-- / .main-navbar -->
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
-
-            <h1>Welcome Home, <%= name%></h1>
-            <!-- <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-              </li>
-            </ul> -->
+            <div id="uploadfile" style="margin-top:150px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" align="center">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title"><h5>Upload Your File</h5></div>
+          <div class="panel-title"><b style="color: red;">**Upload PDF, DOC & DOCS File Only!</b></div>
+          <div class="panel-title"><b style="color: red;">**File Max Size: 5.5MB</b></div>
+        </div>  
+        <div class="panel-body" >
+          <form id="EmployeeForm" class="form-horizontal" method="POST"  role="form" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="file" class="col-md-3 control-label">Upload File
+              </label>
+              <div class="col-md-9">
+                        <h6 style="color: red;"><%= typeof msg != 'undefined' ? msg : '' %></h6>
+                <input type="file" class="form-control" name="file" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-offset-3 col-md-9">
+                <input type="submit" name="submit" value="Upload" class="btn btn-accent">  
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+        </main>
+      </div>
+    </div>
           </footer>
         </main>
       </div>
@@ -239,3 +261,7 @@
     <script src="/scripts/app/app-blog-overview.1.1.0.js"></script>
   </body>
 </html>
+
+
+
+

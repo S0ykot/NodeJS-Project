@@ -1,12 +1,20 @@
-var express 		= require('express');
-var path 			= require('path');
-var bodyParser 		= require('body-parser');
-var ejs 			= require('ejs');
-var exSession 		= require('express-session');
-var cookieParser 	= require('cookie-parser');
-var login 			= require('./controllers/login');
-var logout 			= require('./controllers/logout');
-var facultyHome 	= require('./controllers/faculty/home');
+var express 					= require('express');
+var path 						= require('path');
+var bodyParser 					= require('body-parser');
+var ejs 						= require('ejs');
+var exSession 					= require('express-session');
+var cookieParser 				= require('cookie-parser');
+var login 						= require('./controllers/login');
+var logout 						= require('./controllers/logout');
+var facultyHome 				= require('./controllers/faculty/home');
+var facultyProfile 				= require('./controllers/faculty/profile');
+var facultyChngPass 			= require('./controllers/faculty/changePassword');
+var facultyStudentApproval 		= require('./controllers/faculty/studentApproval');
+var facultyStudentDetails 		= require('./controllers/faculty/studentDetails');
+var facultyStudentReg 			= require('./controllers/faculty/studentReg');
+var facultyTopicAdd 			= require('./controllers/faculty/topicAdd');
+var facultyViewTopic 			= require('./controllers/faculty/viewTopic');
+var facultyFileUpdate 			= require('./controllers/faculty/uploadFile');
 
 
 var app = express();
@@ -23,6 +31,16 @@ app.use('/login', login);
 app.use('/', login);
 app.use('/logout', logout);
 app.use('/home', facultyHome);
+app.use('/profile', facultyProfile);
+app.use('/changePassword', facultyChngPass);
+app.use('/changePassword', facultyChngPass);
+app.use('/studentDetails', facultyStudentDetails);
+app.use('/studentReg', facultyStudentReg);
+app.use('/studentReg', facultyStudentReg);
+app.use('/topicAdd', facultyTopicAdd);
+app.use('/uploadFile', facultyFileUpdate);
+
+
 
 
 //routes
