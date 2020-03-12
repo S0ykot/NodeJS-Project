@@ -22,6 +22,7 @@ module.exports ={
 			}
 		});
 	},
+
 	getRole: function (id,callback) {
 		var sql = "SELECT role_name FROM role,user where role.rid=user.rid and user.user_id_name=?";
 		db.getResult(sql, [id], function(result){
@@ -31,6 +32,28 @@ module.exports ={
 				callback(null);
 			}
 		});
-	}
+	},
+
+	addUser: function(user, callback){
+		var sql = "insert into user values(?,?,?,?)";
+		db.execute(sql, [null, user.faculty_id, user.password, user.role], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+	deleteUser: function(id, callback){
+		var sql = "delete from user where user_id_name=?";
+		db.execute(sql, [id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 
 }

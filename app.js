@@ -1,4 +1,3 @@
-
 //declaration
 var express 		= require('express');
 var path 			= require('path');
@@ -10,12 +9,26 @@ var cookieParser 	= require('cookie-parser');
 var login 			= require('./controllers/login');
 var logout 			= require('./controllers/logout');
 var adminHome 		= require('./controllers/admin/AdminHome');
+//var addStd 			= require('./controllers/AdminStudentReg');
+//var allocateFaculty = require('./controllers/AdminAllocateFaculty');
+//var appvexternal	= require('./controllers/AdminApprovalExternal');
+//var changePassword 	= require('./controllers/AdminChangePassword');
+//var offerTopic		= require('./controllers/AdminOfferTopic');
+//var profile			= require('./controllers/AdminProfile');
+//var appvStudent 	= require('./controllers/AdminStudentApproval');
+//var blockStudent	= require('./controllers/AdminStudentBlock');
+//var unblockStudent	= require('./controllers/AdminStudentUnblock');
+//var studentList		= require('./controllers/AdminStudentDetails');
+//var	blockTeacher	= require('./controllers/AdminTeacherBlock');
+//var	unblockTeacher	= require('./controllers/AdminTeacherUnblock');
+var teacherList		= require('./controllers/admin/AdminTeacherDetails');
+var addteacher		= require('./controllers/admin/AdminTeacherReg');
+//var topicList		= require('./controllers/AdminTopicDetails');
+//var addDomain		= require('./controllers/AdminDomainAdd');
+//var domainlist		= require('./controllers/AdminDomainDetails');
+//var uploadFile		= require('./controllers/AdminUploadFile');
 
 
-
-var login 			= require('./controllers/login');
-var logout 			= require('./controllers/logout');
-var facultyHome 	= require('./controllers/faculty/home');
 
 
 var app = express();
@@ -23,37 +36,42 @@ var app = express();
 //configuration
 app.set('view engine', 'ejs');
 
-
 //middleware
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: false}));
-
 app.use(exSession({secret: 'my value', saveUninitialized: true, resave: false}));
 //app.use(expressValidator());
 app.use('/login', login);
 app.use('/', login);
 app.use('/AdminHome', adminHome);
 app.use('/logout', logout);
-
-app.use('/login', login);
-app.use('/', login);
-app.use('/logout', logout);
-app.use('/home', facultyHome);
+//app.use('/AdminStudentReg', addStd);
+//app.use('/AdminAllocateFaculty',allocateFaculty);
+//app.use('/AdminApprovalExternal',appvexternal);
+//app.use('/AdminChangePassword',changePassword);
+//app.use('/AdminOfferTopic',offerTopic);
+//app.use('/AdminProfile',profile);
+//app.use('/AdminStudentApproval',appvStudent);
+//app.use('/AdminStudentBlock',blockStudent);
+//app.use('/AdminStudentUnblock',unblockStudent);
+//app.use('/AdminStudentDetails',studentList);
+//app.use('/AdminTeacherBlock',blockTeacher);
+//app.use('/AdminTeacherUnblock',unblockTeacher);
+app.use('/AdminTeacherDetails',teacherList);
+app.use('/AdminTeacherReg',addteacher);
+//app.use('/AdminTopicDetails',topicList);
+//app.use('/AdminDomainAdd',addDomain);
+//app.use('/AdminDomainDetails',domainlist); 
+//app.use('/AdminUploadFile',uploadFile);
 
 
 
 //routes
 app.get('/', function(req, res){
-
-	res.render('views/login');
-});
-
-
-
-
 	res.render('index');
 });
+
 
 
 //server startup

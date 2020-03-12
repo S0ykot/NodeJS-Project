@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard </title>
+    <title>Confirmation</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -14,35 +14,6 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body class="h-100">
-    <div class="color-switcher animated">
-      <h5>Accent Color</h5>
-      <ul class="accent-colors">
-        <li class="accent-primary active" data-color="primary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-secondary" data-color="secondary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-success" data-color="success">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-info" data-color="info">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-warning" data-color="warning">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-danger" data-color="danger">
-          <i class="material-icons">check</i>
-        </li>
-      </ul>
-      <div class="close">
-        <i class="material-icons">close</i>
-      </div>
-    </div>
-    <div class="color-switcher-toggle animated pulse infinite">
-      <i class="material-icons">settings</i>
-    </div>
     <div class="container-fluid">
       <div class="row">
         <!-- Main Sidebar -->
@@ -52,7 +23,7 @@
               <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
                 <div class="d-table m-auto">
                   <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="/images/shards-dashboards-logo.svg" alt="Shards Dashboard">
-                  <span class="d-none d-md-inline ml-1">Faculty Dashboard</span>
+                  <span class="d-none d-md-inline ml-1">Admin Dashboard</span>
                 </div>
               </a>
               <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
@@ -72,72 +43,107 @@
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/Teacherhome">
+                <a class="nav-link active" href="/Adminhome">
                   <i class="material-icons">edit</i>
                   <span>Dashboard</span>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link " href="/AdminTeacherReg">
                   <i class="material-icons">note_add</i>
                   <span>Add Faculty</span>
                 </a>
-              </li> -->
-              <!-- <li class="nav-item">
+              </li>
+              <li class="nav-item">
                 <a class="nav-link " href="/AdminTeacherDetails">
                   <i class="material-icons">vertical_split</i>
                   <span>Faculty List</span>
                 </a>
-              </li> -->
+              </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentReg">
+                <a class="nav-link " href="/AdminStudentReg">
                   <i class="material-icons">note_add</i>
                   <span>Add Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentDetails">
+                <a class="nav-link " href="/AdminStudentDetails">
                   <i class="material-icons">vertical_split</i>
                   <span>Student List</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentApproval">
+                <a class="nav-link " href="/AdminStudentApproval">
                   <i class="material-icons">table_chart</i>
                   <span>Approve Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherTopicAdd">
+                <a class="nav-link " href="/AdminStudentBlock">
                   <i class="material-icons">table_chart</i>
-                  <span>Add Topic</span>
+                  <span>Block Student</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/AdminStudentUnblock">
+                  <i class="material-icons">table_chart</i>
+                  <span>Unblock Student</span>
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link " href="/TeacherProgressUpdate">
+                <a class="nav-link " href="/AdminTeacherBlock">
                   <i class="material-icons">table_chart</i>
-                  <span>Progress Update</span>
+                  <span>Block Faculty</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherUploadFiles">
+                <a class="nav-link " href="/AdminTeacherUnblock">
                   <i class="material-icons">table_chart</i>
-                  <span>Upload files</span>
+                  <span>Unblock Faculty</span>
                 </a>
               </li>
-              
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherViewTopic">
+                <a class="nav-link " href="/AdminDomainAdd">
+                  <i class="material-icons">note_add</i>
+                  <span>Add Domain</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/AdminDomainDetails">
+                  <i class="material-icons">note_add</i>
+                  <span>Domain List</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/AdminOfferTopic">
+                  <i class="material-icons">table_chart</i>
+                  <span>Offer Topic</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/AdminTopicDetails">
+                  <i class="material-icons">vertical_split</i>
+                  <span>Topic List</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/AdminAllocateFaculty">
                   <i class="material-icons">person</i>
-                  <span>View Topic</span>
+                  <span>Allocate External</span>
                 </a>
-              </li> 
-              <!-- <li class="nav-item">
+              </li>
+              <li class="nav-item">
                 <a class="nav-link " href="/AdminApprovalExternal">
                   <i class="material-icons">person</i>
                   <span>Approve External</span>
                 </a>
-              </li> -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/AdminUploadFile">
+                  <i class="material-icons">person</i>
+                  <span>Upload File</span>
+                </a>
+              </li>
             </ul>
           </div>
         </aside>
@@ -160,7 +166,7 @@
                   <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="nav-link-icon__wrapper">
                       <i class="material-icons">&#xE7F4;</i>
-                      <span class="badge badge-pill badge-danger"></span>
+                      <span class="badge badge-pill badge-danger">2</span>
                     </div>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
@@ -194,15 +200,15 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <img class="user-avatar rounded-circle mr-2" src="/images/avatars/Admin.jpg" alt="User Avatar">
-                    <span class="d-none d-md-inline-block"><%= name%></span>
+                    <span class="d-none d-md-inline-block">Admin</span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="/TeacherProfile">
+                    <a class="dropdown-item" href="/AdminProfile">
                       <i class="material-icons">&#xE7FD;</i> Profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/TeacherChangePassword">
+                    <a class="dropdown-item" href="/AdminChangePassword">
                       <i class="material-icons">&#xE7FD;</i> Change Password</a>
-                    <div class="dropdown-divider"></div>
+                      <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="/logout">
                       <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                   </div>
@@ -216,26 +222,93 @@
             </nav>
           </div>
           <!-- / .main-navbar -->
-          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <span class="text-uppercase page-subtitle">Overview</span>
+                <h3 class="page-title">Teacher Delete Confirmation</h3>
+              </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Default Light Table -->
+            <div class="row">
+              <div class="col">
+                <div class="card card-small mb-4">
+                  <!-- <div class="card-header border-bottom">
+                    <h6 class="m-0">Active Users</h6>
+                  </div> -->
+                  <div class="card-body p-0 pb-3 text-center">
+                    <form method="POST">
+                      <table class="table mb-0">
+                        <thead class="bg-light">
+                          <tr>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Criterion</th>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Information</th>
+                          </tr>
+                        </thead>
+                        <tbody>
 
-            <h1>Welcome Home, <%= name%></h1>
-            <!-- <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-              </li>
-            </ul> -->
+                          <tr>
+                            <td>Faculty ID</td>
+                            <td><%= teacherDel.faculty_id %></td>
+                          </tr>
+
+                          <tr>
+                            <td>First Name</td>
+                            <td><%= teacherDel.faculty_fname %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Last Name</td>
+                            <td><%= teacherDel.faculty_lname %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Email</td>
+                            <td><%= teacherDel.faculty_email %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Phone</td>
+                            <td><%= teacherDel.faculty_contact %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Department</td>
+                            <td><%= teacherDel.faculty_dept %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Account Status</td>
+                        <% if(teacherDel.status==1) {%>
+                            <td>Active</td>
+                        <% }else {%>
+                            <td>Inactive</td>
+                        <% }%> 
+                          </tr>
+
+                          <tr>
+                            <td colspan="2"><h3 style="color: red;">Are you sure to delete?</h3></td>
+                          </tr>
+
+                          <tr>
+                            <td colspan="2">
+                            	<input type="submit" name="submit" value="Delete">
+                            	&emsp;&emsp;&emsp;&emsp;
+                            	<a href="/AdminTeacherDetails"><input type="button" name="cancel" value="Cancel"></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
+            
           </footer>
         </main>
       </div>
@@ -248,6 +321,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
     <script src="/scripts/extras.1.1.0.min.js"></script>
     <script src="/scripts/shards-dashboards.1.1.0.min.js"></script>
-    <script src="/scripts/app/app-blog-overview.1.1.0.js"></script>
   </body>
 </html>
