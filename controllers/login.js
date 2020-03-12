@@ -1,3 +1,4 @@
+
 /*var express = require('express');
 var router = express.Router();
 var userModel	= require.main.require('./models/user-model');
@@ -55,6 +56,12 @@ var router = express.Router();
 var md5 = require('md5');
 var userModel	= require.main.require('./models/AdminUserModel');
 
+var express = require('express');
+var router = express.Router();
+var md5 = require('md5');
+var userModel	= require.main.require('./models/facultyUserModel');
+
+
 
 router.get('/',function(req,res){
 	console.log('login page requested!');
@@ -67,9 +74,14 @@ router.post('/', function(req, res){
 	var sysDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 	var sysTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 	userModel.getRole(req.body.uname,function(result) {
+
 		//console.log(result);
 		if (result==null) {
 			res.redirect('/login');
+=======
+		if (result==null) {
+			res.send("null");
+
 		}
 		else
 		{
@@ -81,12 +93,20 @@ router.post('/', function(req, res){
 			if (user.role) {
 				userModel.validate(user,function(status) {
 					if (status.status && user.role=='faculty') {
+
 						res.send("Faculty");
+
+						console.log(status);
+							res.cookie('username', req.body.uname);
+							res.cookie('token', md5(md5(req.body.password)));
+							res.redirect('/home');
+
 					}
 					else if (status.status && user.role=='student') {
 						res.send("Student");
 					}
 					else if (status.status==1) {
+
 						res.cookie('username', req.body.uname);
 						res.cookie('token', md5(md5(req.body.password)));
 						//res.cookie('date', sysDate);
@@ -100,6 +120,19 @@ router.post('/', function(req, res){
 			}
 			else{
 				res.redirect('/login');
+
+						res.send("admin");
+					}
+					else
+					{
+						res.send("Kick on you ass");
+					}
+				});
+			}
+			else
+			{
+				res.send("Pai nai");
+
 			}
 			}
 	});
