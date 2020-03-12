@@ -78,7 +78,6 @@ router.post('/', function(req, res){
 		//console.log(result);
 		if (result==null) {
 			res.redirect('/login');
-=======
 		if (result==null) {
 			res.send("null");
 

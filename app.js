@@ -46,14 +46,13 @@ app.use('/home', facultyHome);
 //routes
 app.get('/', function(req, res){
 
-	res.render('views/login');
-});
-
-
-
-
 	res.render('index');
 });
+
+
+
+
+
 
 
 //server startup
