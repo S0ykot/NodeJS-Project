@@ -37,16 +37,12 @@ module.exports ={
 		});
 	},
 
-	/*getAllInactiveStudents:function(callback){
-		var sql = "select * from students where status = 'inactive'";
+	getAllInactiveStudents:function(callback){
+		var sql = "select * from student where status = 0";
 		db.getResult(sql, null, function(results){
-			if(results.length > 0){
-				callback(results);
-			}else{
-				callback(null);
-			}
+			callback(results);
 		});
-	},*/
+	},
 
 	getById: function(id, callback){
 		var sql = "select * from student where sid=?";
@@ -92,8 +88,8 @@ module.exports ={
 		});
 	},
 
-	/*unblockStudent: function(id, callback){
-		var sql = "update students set status = 'active' where id=?";
+	unblockStudent: function(id, callback){
+		var sql = "update student set status = 1 where sid=?";
 		db.execute(sql, [id], function(status){
 			if(status){
 				callback(true);
@@ -101,7 +97,7 @@ module.exports ={
 				callback(false);
 			}
 		});
-	},*/
+	},
 
 	/*approveStudent: function(id, callback){
 		var sql = "update students set status = 'active' where userid=?";
