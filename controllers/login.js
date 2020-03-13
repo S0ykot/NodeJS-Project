@@ -27,7 +27,12 @@ router.post('/', function(req, res){
 			};
 			if (user.role) {
 				userModel.validate(user,function(status) {
-					if (status.status && user.role=='faculty') {
+					if (status==null) {
+						res.redirect('/login');
+					}
+					else
+					{
+						if (status.status && user.role=='faculty') {
 						console.log(status);
 							res.cookie('username', req.body.uname);
 							res.cookie('token', md5(md5(req.body.password)));
@@ -42,6 +47,7 @@ router.post('/', function(req, res){
 					else
 					{
 						res.send("Kick on you ass");
+					}
 					}
 				});
 			}

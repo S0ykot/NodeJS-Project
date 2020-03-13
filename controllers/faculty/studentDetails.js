@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var studentModel	= require.main.require('./models/facultyStudentModel');
 
 
 router.get('*', function(req, res, next){
@@ -14,11 +15,16 @@ router.get('*', function(req, res, next){
 
 
 router.get('/',function(req,res){
-		var data={
-		name: req.cookies['username']
-		};
-		console.log('Home page requested!');
-		res.render('faculty/studentDetails',data);
+	studentModel.getStudentDetails("",function (result) {
+		if (result==null) {
+			res.send("No data found");
+		}
+		else
+		{
+			console.log('Student details page requested!');
+			res.render('faculty/studentDetails',{userid:req.cookies['username'],data:result});
+		}
+	});
 });
 
 module.exports = router;

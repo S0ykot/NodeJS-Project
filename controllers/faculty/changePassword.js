@@ -73,8 +73,6 @@ router.post('/',[
 				}
 			}
 		});
-		/*console.log('password change page requested!');
-		res.render('faculty/changePassword',{userid:req.cookies['username'],error:errors.mapped()});*/
 });
 
 

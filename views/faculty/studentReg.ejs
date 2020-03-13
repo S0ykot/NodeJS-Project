@@ -104,72 +104,60 @@
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/Teacherhome">
+                <a class="nav-link active" href="/home">
                   <i class="material-icons">edit</i>
                   <span>Dashboard</span>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminTeacherReg">
-                  <i class="material-icons">note_add</i>
-                  <span>Add Faculty</span>
-                </a>
-              </li> -->
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminTeacherDetails">
-                  <i class="material-icons">vertical_split</i>
-                  <span>Faculty List</span>
-                </a>
-              </li> -->
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentReg">
+                <a class="nav-link " href="/studentReg">
                   <i class="material-icons">note_add</i>
                   <span>Add Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentDetails">
+                <a class="nav-link " href="/studentDetails">
                   <i class="material-icons">vertical_split</i>
                   <span>Student List</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentApproval">
+                <a class="nav-link " href="/studentApproval">
                   <i class="material-icons">table_chart</i>
                   <span>Approve Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherTopicAdd">
+                <a class="nav-link " href="/topicAdd">
                   <i class="material-icons">table_chart</i>
                   <span>Add Topic</span>
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link " href="/TeacherProgressUpdate">
+                <a class="nav-link " href="/progressUpdate">
                   <i class="material-icons">table_chart</i>
                   <span>Progress Update</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherUploadFiles">
+                <a class="nav-link " href="/uploadFiles">
                   <i class="material-icons">table_chart</i>
                   <span>Upload files</span>
                 </a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherViewTopic">
+                <a class="nav-link " href="/viewTopic">
                   <i class="material-icons">person</i>
                   <span>View Topic</span>
                 </a>
               </li> 
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminApprovalExternal">
+              <li class="nav-item">
+                <a class="nav-link " href="/semesterDetails">
                   <i class="material-icons">person</i>
-                  <span>Approve External</span>
+                  <span>Semester Details</span>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </div>
         </aside>
@@ -183,10 +171,10 @@
               <span class="d-none d-md-inline-block"><%=userid%></span>
               </a>
               <div class="dropdown-menu dropdown-menu-small">
-                  <a class="dropdown-item" href="/TeacherProfile">
+                  <a class="dropdown-item" href="/profile">
                     <i class="material-icons">&#xE7FD;</i> Profile</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/TeacherChangePassword">
+                      <a class="dropdown-item" href="/changePassword">
                       <i class="material-icons">&#xE7FD;</i> Change Password</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item text-danger" href="/logout">
@@ -207,41 +195,65 @@
           <div class="wrap-input100 validate-input m-b-26" data-validate="Academic Id is required">
             <input class="input100" type="text" name="userId" placeholder="Enter Academic ID (XX-XXXXX-X)">
             <span class="focus-input100"></span>
+            <%if(error.userId){%>
+                <b style="color: red;"><%= error.userId.msg%></b>
+            <%}%>
           </div>
 
           <div class="wrap-input100 validate-input m-b-18" data-validate = "First Name is required">
             <input class="input100" type="text" name="fname" placeholder="Enter First Name">
             <span class="focus-input100"></span>
+              <%if(error.fname){%>
+                <b style="color: red;"><%= error.fname.msg%></b>
+            <%}%>
           </div>
 
           <div class="wrap-input100 validate-input m-b-26" data-validate="Last Name is required">
             <input class="input100" type="text" name="lname" placeholder="Enter Last Name">
             <span class="focus-input100"></span>
+            <%if(error.lname){%>
+                <b style="color: red;"><%= error.lname.msg%></b>
+            <%}%>
           </div>
 
           <div class="wrap-input100 validate-input m-b-18" data-validate = "Email is required">
             <input class="input100" type="text" name="email" placeholder="Enter Valid Email">
             <span class="focus-input100"></span>
+            <%if(error.email){%>
+                <b style="color: red;"><%= error.email.msg%></b>
+            <%}%>
           </div>
 
           <div class="wrap-input100 validate-input m-b-18" data-validate = "Contact No. is required">
             <input class="input100" type="text" name="phnNo" placeholder="Enter Contact Number">
             <span class="focus-input100"></span>
+            <%if(error.phnNo){%>
+                <b style="color: red;"><%= error.userId.msg%></b>
+            <%}%>
           </div>
 
           <div class="wrap-input100 validate-input m-b-26" data-validate="CGPA is required">
             <input class="input100" type="text" name="cgpa" placeholder="Enter CGPA">
             <span class="focus-input100"></span>
+            <%if(error.cgpa){%>
+                <b style="color: red;"><%= error.cgpa.msg%></b>
+            <%}%>
           </div>
 
           <div class="wrap-input100 validate-input m-b-18" data-validate = "Department is required">
             <input class="input100" type="text" name="dept" placeholder="Enter Department">
             <span class="focus-input100"></span>
+            <%if(error.dept){%>
+                <b style="color: red;"><%= error.dept.msg%></b>
+            <%}%>
           </div>
 
           <div class="wrap-input100 validate-input m-b-26" data-validate="Credit is required">
             <input class="input100" type="text" name="credit" placeholder="Credit Completed (After This Semester)">
             <span class="focus-input100"></span>
+            <%if(error.credit){%>
+                <b style="color: red;"><%= error.credit.msg%></b>
+            <%}%>
           </div>
 
           

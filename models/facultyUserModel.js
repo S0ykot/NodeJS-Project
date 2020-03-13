@@ -52,6 +52,16 @@ module.exports ={
 				callback(false);
 			}
 		});
+		},
+	addUser : function (data,callback) {
+			var sql = "INSERT INTO user values (?,?,?,?)";
+			db.execute(sql, [null,data.userid,'aiub@'+data.fname,3], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
 		}
 
 }
