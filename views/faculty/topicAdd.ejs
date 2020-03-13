@@ -37,35 +37,7 @@
 <!--===============================================================================================-->
 </head>
 <body class="h-100">
-	    <!-- <div class="color-switcher animated">
-      <h5>Accent Color</h5>
-      <ul class="accent-colors">
-        <li class="accent-primary active" data-color="primary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-secondary" data-color="secondary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-success" data-color="success">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-info" data-color="info">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-warning" data-color="warning">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-danger" data-color="danger">
-          <i class="material-icons">check</i>
-        </li>
-      </ul>
-      <div class="close">
-        <i class="material-icons">close</i>
-      </div>
-    </div>
-    <div class="color-switcher-toggle animated pulse infinite">
-      <i class="material-icons">settings</i>
-    </div> -->
+
 
     <div class="container-fluid">
       <div class="row">
@@ -96,72 +68,60 @@
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/Teacherhome">
+                <a class="nav-link active" href="/home">
                   <i class="material-icons">edit</i>
                   <span>Dashboard</span>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminTeacherReg">
-                  <i class="material-icons">note_add</i>
-                  <span>Add Faculty</span>
-                </a>
-              </li> -->
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminTeacherDetails">
-                  <i class="material-icons">vertical_split</i>
-                  <span>Faculty List</span>
-                </a>
-              </li> -->
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentReg">
+                <a class="nav-link " href="/studentReg">
                   <i class="material-icons">note_add</i>
                   <span>Add Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentDetails">
+                <a class="nav-link " href="/studentDetails">
                   <i class="material-icons">vertical_split</i>
                   <span>Student List</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentApproval">
+                <a class="nav-link " href="/studentApproval">
                   <i class="material-icons">table_chart</i>
                   <span>Approve Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherTopicAdd">
+                <a class="nav-link " href="/topicAdd">
                   <i class="material-icons">table_chart</i>
                   <span>Add Topic</span>
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link " href="/TeacherProgressUpdate">
+                <a class="nav-link " href="/progressUpdate">
                   <i class="material-icons">table_chart</i>
                   <span>Progress Update</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherUploadFiles">
+                <a class="nav-link " href="/uploadFiles">
                   <i class="material-icons">table_chart</i>
                   <span>Upload files</span>
                 </a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherViewTopic">
+                <a class="nav-link " href="/viewTopic">
                   <i class="material-icons">person</i>
                   <span>View Topic</span>
                 </a>
               </li> 
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminApprovalExternal">
+              <li class="nav-item">
+                <a class="nav-link " href="/semesterDetails">
                   <i class="material-icons">person</i>
-                  <span>Approve External</span>
+                  <span>Semester Details</span>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </div>
         </aside>
@@ -175,10 +135,10 @@
               <span class="d-none d-md-inline-block"><%=userid%></span>
               </a>
               <div class="dropdown-menu dropdown-menu-small">
-                  <a class="dropdown-item" href="/TeacherProfile">
+                  <a class="dropdown-item" href="/profile">
                     <i class="material-icons">&#xE7FD;</i> Profile</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/TeacherChangePassword">
+                      <a class="dropdown-item" href="/changePassword">
                       <i class="material-icons">&#xE7FD;</i> Change Password</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item text-danger" href="/logout">
@@ -202,20 +162,20 @@
 					</div>
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "">
             <select id="feInputState" class="form-control" name="type">
-                <option selected>Select Type</option>
-                <option value="thesis">THESIS</option>
-                <option value="SP1">SOFTWARE PROJECT 1</option>
-                <option value="SP2">SOFTWARE PROJECT 2</option>
+                <option selected value="">Select Type</option>
+                <%for(var i=0;i<type.length;i++){%>
+                <option value="<%=type[i].type_id%>"><%=type[i].type_name%></option>
+                <%}%>
             </select>
             <br>
 						<span class="focus-input100"></span>
 					</div>
 
           <div class="wrap-input100 validate-input m-b-26" data-validate="Academic Id is required">
-            <select id="feInputState" class="form-control" name="type">
-                <option selected>Select Domain</option>
-                <%for(var i=0;i<dom.length;i++){%>
-                <option value="<%=dom[i].name%>"><%=dom[i].name%></option>
+            <select id="feInputState" class="form-control" name="domain">
+                <option selected value="">Select Domain</option>
+                <%for(var i=0;i<domain.length;i++){%>
+                  <option value="<%=domain[i].dom_id%>"><%=domain[i].dom_name%></option>
                 <%}%>
               </select>
             <span class="focus-input100"></span>
@@ -223,10 +183,8 @@
 
           <div class="wrap-input100 validate-input m-b-18">
             <select id="feInputState" class="form-control" name="supervisor">
-                <option selected value=""><b>Select Supervisor</b></option>
-                <%for(var i=0;i<teacher.length;i++){%>
-                <option value="<%=teacher[i].fname%> <%=teacher[i].lname%>"><%=teacher[i].fname%> <%=teacher[i].lname%></option>
-                <%}%>
+                <option selected value="<%=supervisor.fid%>"><b><%=supervisor.faculty_fname%> <%=supervisor.faculty_fname%></b></option>
+
             </select>
             <br>
             <span class="focus-input100"></span>
