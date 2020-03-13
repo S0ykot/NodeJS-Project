@@ -72,7 +72,7 @@ router.post('/',
 							res.render('faculty/profile',{details:result,error:errors.mapped()});
 						}
 							});
-						}
+					}
 				else
 				{
 					if (result.password==req.body.password) {

@@ -42,6 +42,16 @@ module.exports ={
 				callback(null);
 			}
 		});
-	}
+	},
+	updatePassword: function (data,callback) {
+			var sql = "Update user SET password=? where user_id_name=?";
+			db.execute(sql, [data.newPass,data.userid], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+		}
 
 }

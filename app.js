@@ -33,7 +33,6 @@ app.use('/logout', logout);
 app.use('/home', facultyHome);
 app.use('/profile', facultyProfile);
 app.use('/changePassword', facultyChngPass);
-app.use('/changePassword', facultyChngPass);
 app.use('/studentDetails', facultyStudentDetails);
 app.use('/studentReg', facultyStudentReg);
 app.use('/studentReg', facultyStudentReg);
