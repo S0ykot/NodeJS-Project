@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var studentModel	= require.main.require('./models/facultyStudentModel');
 
 
 router.get('*', function(req, res, next){
@@ -14,11 +15,33 @@ router.get('*', function(req, res, next){
 
 
 router.get('/',function(req,res){
-		var data={
-		name: req.cookies['username']
-		};
-		console.log('Home page requested!');
-		res.render('faculty/studentApproval',data);
+		studentModel.inactiveStudentDetails(null,function(result) {
+			if (result==null) {
+				res.render('faculty/studentApproval',{userid:req.cookies['username'],data:null});
+			}
+			else
+			{
+				res.render('faculty/studentApproval',{userid:req.cookies['username'],data:result});
+			}
+			
+		});
+		
 });
+
+router.get('/approve/:id',function (req,res) {
+	var id = req.params.id;
+	studentModel.approveStudent(id,function(status) {
+		if (status) {
+			res.redirect('/studentApproval');
+		}
+		else
+		{
+			res.redirect('/studentApproval');
+		}
+	})
+
+});
+
+
 
 module.exports = router;

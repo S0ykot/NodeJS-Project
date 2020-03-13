@@ -72,7 +72,7 @@
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/Teacherhome">
+                <a class="nav-link active" href="/home">
                   <i class="material-icons">edit</i>
                   <span>Dashboard</span>
                 </a>
@@ -90,54 +90,54 @@
                 </a>
               </li> -->
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentReg">
+                <a class="nav-link " href="/studentReg">
                   <i class="material-icons">note_add</i>
                   <span>Add Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentDetails">
+                <a class="nav-link " href="/studentDetails">
                   <i class="material-icons">vertical_split</i>
                   <span>Student List</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherStudentApproval">
+                <a class="nav-link " href="/studentApproval">
                   <i class="material-icons">table_chart</i>
                   <span>Approve Student</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherTopicAdd">
+                <a class="nav-link " href="/topicAdd">
                   <i class="material-icons">table_chart</i>
                   <span>Add Topic</span>
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link " href="/TeacherProgressUpdate">
+                <a class="nav-link " href="/progressUpdate">
                   <i class="material-icons">table_chart</i>
                   <span>Progress Update</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherUploadFiles">
+                <a class="nav-link " href="/uploadFiles">
                   <i class="material-icons">table_chart</i>
                   <span>Upload files</span>
                 </a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link " href="/TeacherViewTopic">
+                <a class="nav-link " href="/viewTopic">
                   <i class="material-icons">person</i>
                   <span>View Topic</span>
                 </a>
               </li> 
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminApprovalExternal">
+              <li class="nav-item">
+                <a class="nav-link " href="/semesterDetails">
                   <i class="material-icons">person</i>
-                  <span>Approve External</span>
+                  <span>Semester Details</span>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </div>
         </aside>
@@ -244,22 +244,37 @@
                           <th scope="col" class="border-0">CGPA</th>
                           <th scope="col" class="border-0">Department</th>
                           <th scope="col" class="border-0">Complete Credit</th>
+                          <th scope="col" class="border-0">Reg Date</th>
+                          <th scope="col" class="border-0">Status</th>
                           <th scope="col" class="border-0" colspan="2">Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <%for(var i=0;i<data.length;i++){%>
-                        <tr>
-                          <td><%=data[i].userid%></td>
-                          <td><%=data[i].fname%></td>
-                          <td><%=data[i].lname%></td>
-                          <td><%=data[i].email%></td>
-                          <td><%=data[i].contact%></td>
-                          <td><%=data[i].cgpa%></td>
-                          <td><%=data[i].dept%></td>
-                          <td><%=data[i].credit%></td>
-                          <td><a href="/TeacherStudentApproval/approve/<%=data[i].id%>"><button>Approve</button></a></td>
-                        </tr>
+                        <%if(!data){%>
+                          <td colspan="11" align="center">No Data</td>
+                        <%} else {%>
+
+                            <%for(var i=0;i<data.length;i++){%>
+                            <tr>
+                              <td><%=data[i].student_id%></td>
+                              <td><%=data[i].student_fname%></td>
+                              <td><%=data[i].student_lname%></td>
+                              <td><%=data[i].student_email%></td>
+                              <td><%=data[i].student_contact%></td>
+                              <td><%=data[i].student_cgpa%></td>
+                              <td><%=data[i].student_dept%></td>
+                              <td><%=data[i].student_credit%></td>
+                              <td><%=data[i].student_regDate%></td>
+                              <%if (data[i].status){%>
+                                <td>Active</td>
+                              <%}
+                              else {%>
+                                  <td>Inactive</td>
+                                  <%}%>
+                                <td><a href="/studentApproval/approve/<%=data[i].sid%>"><button>Approve</button></a></td>
+                            </tr>
+                            </tr>
+                            <%}%>
                         <%}%>
                       </tbody>
                     </table>
@@ -269,63 +284,6 @@
             </div>
             <!-- End Default Light Table -->
             <!-- Default Dark Table -->
-           <!--  <div class="row">
-              <div class="col">
-                <div class="card card-small overflow-hidden mb-4">
-                  <div class="card-header bg-dark">
-                    <h6 class="m-0 text-white">Inactive Users</h6>
-                  </div>
-                  <div class="card-body p-0 pb-3 bg-dark text-center">
-                    <table class="table table-dark mb-0">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th scope="col" class="border-bottom-0">#</th>
-                          <th scope="col" class="border-bottom-0">First Name</th>
-                          <th scope="col" class="border-bottom-0">Last Name</th>
-                          <th scope="col" class="border-bottom-0">Country</th>
-                          <th scope="col" class="border-bottom-0">City</th>
-                          <th scope="col" class="border-bottom-0">Phone</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Graham</td>
-                          <td>Brent</td>
-                          <td>Benin</td>
-                          <td>Ripabottoni</td>
-                          <td>1-512-760-9094</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Clark</td>
-                          <td>Angela</td>
-                          <td>Estonia</td>
-                          <td>Borghetto di Vara</td>
-                          <td>1-660-850-1647</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Wylie</td>
-                          <td>Joseph</td>
-                          <td>Korea, North</td>
-                          <td>Guelph</td>
-                          <td>325-4351</td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Garth</td>
-                          <td>Clementine</td>
-                          <td>Indonesia</td>
-                          <td>Narcao</td>
-                          <td>722-8264</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div> -->
             <!-- End Default Dark Table -->
           </div>
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">

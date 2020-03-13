@@ -34,6 +34,7 @@ app.use('/home', facultyHome);
 app.use('/profile', facultyProfile);
 app.use('/changePassword', facultyChngPass);
 app.use('/studentDetails', facultyStudentDetails);
+app.use('/studentApproval', facultyStudentApproval);
 app.use('/studentReg', facultyStudentReg);
 app.use('/studentReg', facultyStudentReg);
 app.use('/topicAdd', facultyTopicAdd);

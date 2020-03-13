@@ -30,5 +30,15 @@ module.exports ={
 				callback(false);
 			}
 		});
+		},
+		approveStudent : function (id,callback) {
+			var sql = "Update student SET status=1 where sid=?";
+			db.execute(sql, [id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
 		}
 }
