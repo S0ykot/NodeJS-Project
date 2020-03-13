@@ -25,7 +25,7 @@ module.exports ={
 
 	addTeacher: function(user, callback){
 		var sql = "insert into faculty values(?,?,?,?,?,?,?,?,?)";
-		db.execute(sql, [null, user.faculty_id, user.fname, user.lname, user.email, user.contact, user.regDate, user.dept, user.status], function(status){
+		db.execute(sql, [null, user.userid, user.fname, user.lname, user.email, user.contact, user.regDate, user.dept, user.status], function(status){
 			if(status){
 				callback(true);
 			}else{
@@ -78,7 +78,7 @@ module.exports ={
 
 	updateTeacher: function(user, callback){
 		var sql = "update faculty set faculty_id=?, faculty_fname=?, faculty_lname=?, faculty_email=?, faculty_contact=? where fid=?";
-		db.execute(sql, [user.faculty_id, user.fname, user.lname, user.email, user.contact, user.id], function(status){
+		db.execute(sql, [user.userid, user.fname, user.lname, user.email, user.contact, user.id], function(status){
 			if(status){
 				callback(true);
 			}else{

@@ -7,7 +7,7 @@ const { matchedData, sanitizeBody } = require('express-validator/filter');
 
 
 router.get('*', function(req, res, next){
-	if(req.cookies['username'] == null){
+	if(req.cookies['token'] == null){
 		res.redirect('/');
 	}else{
 		next();
@@ -50,7 +50,7 @@ router.post('/AdminTeacherUpdate/:id', [
   ], function(req, res){
 	
 	var teacher = {
-		faculty_id: req.body.userid,
+		userid: req.body.userid,
 		fname: req.body.fname,
 		lname: req.body.lname,
 		email: req.body.email,
@@ -83,7 +83,7 @@ router.post('/AdminTeacherUpdate/:id', [
 router.get('/AdminTeacherDelete/:id', function(req, res){
 	
 	teacherModel.getByUserId(req.params.id, function(result){
-		//console.log(result);
+		console.log(result);
 		res.render('admin/AdminTeacherDelete', {teacherDel: result[0]});
 	});
 });

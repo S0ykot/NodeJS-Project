@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Teacher List</title>
+    <title>Confirmation</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -31,7 +31,7 @@
               </a>
             </nav>
           </div>
-          <!-- <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+          <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
             <div class="input-group input-group-seamless ml-3">
               <div class="input-group-prepend">
                 <div class="input-group-text">
@@ -39,7 +39,7 @@
                 </div>
               </div>
               <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
-          </form> -->
+          </form>
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -152,17 +152,17 @@
           <div class="main-navbar sticky-top bg-white">
             <!-- Main Navbar -->
             <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-             
-            <div class="input-group input-group-seamless ml-3">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fas fa-search"></i>
-                </div>
-              </div>
-              <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
-              
+              <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+                <div class="input-group input-group-seamless ml-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                  <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+              </form>
               <ul class="navbar-nav border-left flex-row ">
-                <!-- <li class="nav-item border-right dropdown notifications">
+                <li class="nav-item border-right dropdown notifications">
                   <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="nav-link-icon__wrapper">
                       <i class="material-icons">&#xE7F4;</i>
@@ -196,7 +196,7 @@
                     </a>
                     <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
                   </div>
-                </li> -->
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <img class="user-avatar rounded-circle mr-2" src="/images/avatars/Admin.jpg" alt="User Avatar">
@@ -227,7 +227,7 @@
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Overview</span>
-                <h3 class="page-title">Teacher Details</h3>
+                <h3 class="page-title">Student Delete Confirmation</h3>
               </div>
             </div>
             <!-- End Page Header -->
@@ -239,47 +239,79 @@
                     <h6 class="m-0">Active Users</h6>
                   </div> -->
                   <div class="card-body p-0 pb-3 text-center">
-                    <table class="table mb-0">
-                      <thead class="bg-light">
-                        <tr>
-                          <th scope="col" class="border-0">Faculty ID</th>
-                          <th scope="col" class="border-0">First Name</th>
-                          <th scope="col" class="border-0">Last Name</th>
-                          <th scope="col" class="border-0">Email</th>
-                          <th scope="col" class="border-0">Phone</th>
-                          <th scope="col" class="border-0">Department</th>
-                          <th scope="col" class="border-0">Registration Date</th>
-                          <th scope="col" class="border-0">Account Status</th>
-                          <th scope="col" class="border-0" colspan="2">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <div id="faculty">
-                            <% for(var i=0; i < teacherlist.length; i++){ %>
-          				        <tr>
-          				        	<td><%= teacherlist[i].faculty_id %></td>
-      				              	<td><%= teacherlist[i].faculty_fname %></td>
-      					            <td><%= teacherlist[i].faculty_lname %></td>
-      					            <td><%= teacherlist[i].faculty_email %></td>
-      					            <td><%= teacherlist[i].faculty_contact %></td>
-      					            <td><%= teacherlist[i].faculty_dept %></td>
-      					            <td><%= teacherlist[i].faculty_regDate %></td>
-                            <% if(teacherlist[i].status==1) {%>
-      					            <td>Active</td>
-                            <% }else {%>
-                                    <td>Inactive</td>
-                            <% }%>    
-      					            <td>
-      									<a style="background-color: AliceBlue;color: DodgerBlue;font-weight: bold;padding: 2px 3px;text-align: center;text-decoration: none;display: inline-block;border: 1px solid DodgerBlue;" href="/AdminTeacherDetails/AdminTeacherUpdate/<%= teacherlist[i].fid %>">Update</a> 
-      								</td> 
-      								<td>
-                                        <a style="background-color: AliceBlue;color: DodgerBlue;font-weight: bold;padding: 2px 3px;text-align: center;text-decoration: none;display: inline-block;border: 1px solid DodgerBlue;" href="/AdminTeacherDetails/AdminTeacherDelete/<%= teacherlist[i].faculty_id %>">Delete</a> 
-      						        </td>
-      						    </tr>
-    					    <% } %>
-                          </tbody>
-                      </div>
-                    </table>
+                    <form method="POST">
+                      <table class="table mb-0">
+                        <thead class="bg-light">
+                          <tr>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Criterion</th>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Information</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr>
+                            <td>Student ID</td>
+                            <td><%= studentDel.student_id %></td>
+                          </tr>
+
+                          <tr>
+                            <td>First Name</td>
+                            <td><%= studentDel.student_fname %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Last Name</td>
+                            <td><%= studentDel.student_lname %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Email</td>
+                            <td><%= studentDel.student_email %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Phone</td>
+                            <td><%= studentDel.student_contact %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Department</td>
+                            <td><%= studentDel.student_dept %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Credit</td>
+                            <td><%= studentDel.student_credit %></td>
+                          </tr>
+
+                          <tr>
+                            <td>CGPA</td>
+                            <td><%= studentDel.student_cgpa %></td>
+                          </tr>
+
+                          <tr>
+                            <td>Account Status</td>
+                        <% if(studentDel.status==1) {%>
+                            <td>Active</td>
+                        <% }else {%>
+                            <td>Inactive</td>
+                        <% }%>
+                          </tr>
+
+                          <tr>
+                            <td colspan="2"><h3 style="color: red;">Are you sure to delete?</h3></td>
+                          </tr>
+
+                          <tr>
+                            <td colspan="2">
+                            	<input type="submit" name="submit" value="Delete">
+                            	&emsp;&emsp;&emsp;&emsp;
+                            	<a href="/AdminStudentDetails"><input type="button" name="cancel" value="Cancel"></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
                   </div>
                 </div>
               </div>
