@@ -43,28 +43,20 @@ module.exports ={
 		});
 	},
 
-	/*getAllActiveTeachers:function(callback){
-		var sql = "select * from teachers where status ='active'";
+	getAllActiveTeachers:function(callback){
+		var sql = "select * from faculty where status = 1";
 		db.getResult(sql, null, function(results){
-			if(results.length > 0){
-				callback(results);
-			}else{
-				callback(null);
-			}
-		});
-	},*/
-
-	/*getAllInactiveTeachers:function(callback){
-		var sql = "select * from teachers where status ='inactive'";
-		db.getResult(sql, null, function(results){
-			if(results.length > 0){
-				callback(results);
-			}else{
-				callback(null);
-			}
+			callback(results);
 		});
 	},
-*/
+
+	getAllInactiveTeachers:function(callback){
+		var sql = "select * from faculty where status = 0";
+		db.getResult(sql, null, function(results){
+			callback(results);
+		});
+	},
+
 	getById: function(id, callback){
 		var sql = "select * from faculty where fid=?";
 		db.getResult(sql, [id], function(result){
@@ -98,8 +90,8 @@ module.exports ={
 		});
 	},
 
-	/*blockTeacher: function(id, callback){
-		var sql = "update teachers set status = 'inactive' where id=?";
+	blockTeacher: function(id, callback){
+		var sql = "update faculty set status = 0 where fid=?";
 		db.execute(sql, [id], function(status){
 			if(status){
 				callback(true);
@@ -107,10 +99,10 @@ module.exports ={
 				callback(false);
 			}
 		});
-	},*/
+	},
 
-	/*unblockTeacher: function(id, callback){
-		var sql = "update teachers set status = 'active' where id=?";
+	unblockTeacher: function(id, callback){
+		var sql = "update faculty set status = 1 where fid=?";
 		db.execute(sql, [id], function(status){
 			if(status){
 				callback(true);
@@ -118,5 +110,5 @@ module.exports ={
 				callback(false);
 			}
 		});
-	},*/
+	},
 }
