@@ -22,6 +22,19 @@ module.exports ={
 			}
 		});
 	},
+
+	getById: function(userid, callback){
+		var sql = "SELECT * FROM `user` WHERE user_id_name=?";
+		db.getResult(sql, [userid], function(result){
+
+			if(result.length > 0){
+				callback(result[0]);
+			}else{
+				callback(null);
+			}
+		});
+	},
+
 	getRole: function (user,callback) {
 		var sql = "SELECT role_name FROM role,user where role.rid=user.rid and user.user_id_name=? and user.password=?";
 		db.getResult(sql, [user.userid,user.password], function(result){
@@ -33,7 +46,7 @@ module.exports ={
 		});
 	},
 	insert: function(user, callback){
-		var sql = "INSERT INTO user (`uid`, `user_id_name`, `password`, `rid`) VALUES (?,?,?,?)";
+		var sql = "INSERT INTO user  VALUES (?,?,?,?)";
 		db.execute(sql,[null,user.userid,user.password,'3'], function(status){
 			if(status){
 				callback(true);
@@ -42,5 +55,16 @@ module.exports ={
 			}
 		});
 	},
+
+	update: function(user, callback){
+		var sql = "update user set password=? where user_id_name=?";
+		db.execute(sql, [user.newPass,user.userid],function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	}
 
 }
