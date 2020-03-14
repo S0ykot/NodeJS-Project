@@ -6,12 +6,14 @@ var bodyParser 		= require('body-parser');
 var ejs 			= require('ejs');
 var exSession 		= require('express-session');
 var cookieParser 	= require('cookie-parser');
-//var expressValidator= require('express-validator');
+var expressValidator= require('express-validator');
 var login 			= require('./controllers/login');
 var logout 			= require('./controllers/logout');
 var studentHome 	= require('./controllers/student/home');
 var studentReg 		= require('./controllers/student/reg');
-var studentCngPass 		= require('./controllers/student/changePassword');
+var studentCngPass 	= require('./controllers/student/changePassword');
+var studentUpload 	= require('./controllers/student/upload');
+var studentDownload = require('./controllers/student/download');
 //var studentRegInfo 		= require('./controllers/student/regInfo');
 var app = express();
 
@@ -31,6 +33,8 @@ app.use('/', login);
 app.use('/studentHome', studentHome);
 app.use('/studentReg', studentReg);
 app.use('/studentCngPass', studentCngPass);
+app.use('/studentUpload', studentUpload);
+app.use('/studentDownload', studentDownload);
 //app.use('/studentRegInfo', studentRegInfo);
 app.use('/logout', logout);
 
