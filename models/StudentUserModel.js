@@ -31,6 +31,16 @@ module.exports ={
 				callback(null);
 			}
 		});
-	}
+	},
+	insert: function(user, callback){
+		var sql = "INSERT INTO user (`uid`, `user_id_name`, `password`, `rid`) VALUES (?,?,?,?)";
+		db.execute(sql,[null,user.userid,user.password,'3'], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 
 }

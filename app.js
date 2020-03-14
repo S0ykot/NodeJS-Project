@@ -10,6 +10,8 @@ var cookieParser 	= require('cookie-parser');
 var login 			= require('./controllers/login');
 var logout 			= require('./controllers/logout');
 var studentHome 	= require('./controllers/student/home');
+var studentReg 		= require('./controllers/student/reg');
+//var studentRegInfo 		= require('./controllers/student/regInfo');
 var app = express();
 
 //configuration
@@ -26,6 +28,8 @@ app.use(exSession({secret: 'my value', saveUninitialized: true, resave: false}))
 app.use('/login', login);
 app.use('/', login);
 app.use('/studentHome', studentHome);
+app.use('/studentReg', studentReg);
+//app.use('/studentRegInfo', studentRegInfo);
 app.use('/logout', logout);
 
 //routes

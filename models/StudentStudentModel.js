@@ -53,8 +53,8 @@ module.exports ={
 		});
 	},
 	update: function(user, callback){
-		var sql = "update student set fname=?, lname=?, contact=?, dept=?, cgpa=?, credit=? where userid=?";
-		db.execute(sql, [user.fname,user.lname,user.contact,user.dept,user.cgpa,user.credit,user.userid],function(status){
+		var sql = "update student set student_fname=?, student_lname=?, student_contact=?, student_dept=?, student_cgpa=?, student_credit=? where student_id=?";
+		db.execute(sql, [user.student_fname,user.student_lname,user.student_contact,user.student_dept,user.student_cgpa,user.student_credit,user.student_id],function(status){
 			if(status){
 				callback(true);
 			}else{
