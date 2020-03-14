@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2020 at 09:01 PM
+-- Generation Time: Mar 14, 2020 at 10:53 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -174,6 +174,15 @@ CREATE TABLE `student_thesis` (
   `ext_status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `student_thesis`
+--
+
+INSERT INTO `student_thesis` (`thesis_id`, `group_id`, `sid`, `sem_id`, `subDom_id`, `external`, `thesis_progress`, `ext_status`) VALUES
+(1, 1, 1, 1, 1, 'MOHAIMEN BIN NOOR', 1, 1),
+(2, 1, 2, 1, 1, 'MOHAIMEN BIN NOOR', 1, 1),
+(3, 2, 3, 1, 2, 'MOHAIMEN BIN NOOR', 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -194,7 +203,9 @@ CREATE TABLE `sub_domain` (
 --
 
 INSERT INTO `sub_domain` (`subDom_id`, `subDom_name`, `subDom_desc`, `type_id`, `dom_id`, `fid`) VALUES
-(1, 'Food Management System', 'IOS and android', 2, 3, 1);
+(1, 'Food Management System', 'IOS and android', 2, 3, 1),
+(2, 'Agent Robot', 'Arduno', 2, 4, 1),
+(3, 'Doctor\'s Hub', 'About doctor', 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -376,13 +387,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student_thesis`
 --
 ALTER TABLE `student_thesis`
-  MODIFY `thesis_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `thesis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sub_domain`
 --
 ALTER TABLE `sub_domain`
-  MODIFY `subDom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `subDom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `thesis_type`

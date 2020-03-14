@@ -15,6 +15,7 @@ var facultyStudentReg 			= require('./controllers/faculty/studentReg');
 var facultyTopicAdd 			= require('./controllers/faculty/topicAdd');
 var facultyViewTopic 			= require('./controllers/faculty/viewTopic');
 var facultyFileUpdate 			= require('./controllers/faculty/uploadFile');
+var facultyProgressUpdate 		= require('./controllers/faculty/progressUpdate');
 
 
 var app = express();
@@ -39,6 +40,8 @@ app.use('/studentReg', facultyStudentReg);
 app.use('/studentReg', facultyStudentReg);
 app.use('/topicAdd', facultyTopicAdd);
 app.use('/uploadFile', facultyFileUpdate);
+app.use('/viewTopic', facultyViewTopic);
+app.use('/progressUpdate', facultyProgressUpdate);
 
 
 
