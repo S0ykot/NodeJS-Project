@@ -23,8 +23,8 @@ var	unblockTeacher	= require('./controllers/admin/AdminTeacherUnblock');
 var teacherList		= require('./controllers/admin/AdminTeacherDetails');
 var addteacher		= require('./controllers/admin/AdminTeacherReg');
 //var topicList		= require('./controllers/AdminTopicDetails');
-//var addDomain		= require('./controllers/AdminDomainAdd');
-//var domainlist		= require('./controllers/AdminDomainDetails');
+var addDomain		= require('./controllers/admin/AdminDomainAdd');
+var domainlist		= require('./controllers/admin/AdminDomainDetails');
 //var uploadFile		= require('./controllers/AdminUploadFile');
 
 
@@ -40,7 +40,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(exSession({secret: 'my value', saveUninitialized: true, resave: false}));
-//app.use(expressValidator());
 app.use('/login', login);
 app.use('/', login);
 app.use('/AdminHome', adminHome);
@@ -60,8 +59,8 @@ app.use('/AdminTeacherUnblock',unblockTeacher);
 app.use('/AdminTeacherDetails',teacherList);
 app.use('/AdminTeacherReg',addteacher);
 //app.use('/AdminTopicDetails',topicList);
-//app.use('/AdminDomainAdd',addDomain);
-//app.use('/AdminDomainDetails',domainlist); 
+app.use('/AdminDomainAdd',addDomain);
+app.use('/AdminDomainDetails',domainlist); 
 //app.use('/AdminUploadFile',uploadFile);
 
 
