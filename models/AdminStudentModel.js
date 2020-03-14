@@ -77,6 +77,18 @@ module.exports ={
 		});
 	},
 
+
+	getUserIDById: function(id, callback){
+		var sql = "select student_id from student where sid=?";
+		db.getResult(sql, [id], function(result){
+			if(result){
+				callback(result);
+			}else{
+				callback(null);
+			}
+		});
+	},
+
 	blockStudent: function(id, callback){
 		var sql = "update student set status = 0 where sid=?";
 		db.execute(sql, [id], function(status){
@@ -99,8 +111,8 @@ module.exports ={
 		});
 	},
 
-	/*approveStudent: function(id, callback){
-		var sql = "update students set status = 'active' where userid=?";
+	approveStudent: function(id, callback){
+		var sql = "update student set status = 1 where sid=?";
 		db.execute(sql, [id], function(status){
 			if(status){
 				callback(true);
@@ -108,5 +120,5 @@ module.exports ={
 				callback(false);
 			}
 		});
-	},*/
+	},
 }
