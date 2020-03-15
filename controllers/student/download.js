@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const path = require('path');
 const studentFile= require.main.require('./models/StudentFilesModel');
+const thesisApplied= require.main.require('./models/StudentThesisApplied');
 
 router.get('*',function(req,res,next){
 	if(req.cookies['username']!=null){
@@ -13,25 +14,31 @@ router.get('*',function(req,res,next){
 router.get('/',function(req,res){
 	if(req.cookies['username']!=null)
 	{
-		studentFile.getById(req.session.sid,function(result){
-			if(result!=null){
-				var data={
-					name: req.cookies['username'],
-					user:result
+		thesisApplied.getBySId(req.session.sid,function(results){
+			if(results!=null){
+				studentFile.getById(results.group_id,function(result)
+				{
+					if(result!=null){
+						var data={
+							name: req.cookies['username'],
+							user:result
+							}
+							console.log('login page requested!');
+						
+							res.render('student/download/index',data);
+					}else{
+						var data={
+							name: req.cookies['username'],
+							user:result
+							}
+							console.log('login page requested!');
+						
+							res.render('student/download/index',data);
 					}
-					console.log('login page requested!');
-				
-					res.render('student/download/index',data);
-			}else{
-				var data={
-					name: req.cookies['username'],
-					user:result
-					}
-					console.log('login page requested!');
-				
-					res.render('student/download/index',data);
+				});
 			}
 		});
+
 		
 	}else{
 		res.redirect('/logout');

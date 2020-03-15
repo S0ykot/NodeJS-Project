@@ -12,6 +12,18 @@ module.exports ={
 			}
 		});
 	},
+
+	getCount: function(id, callback){
+		var sql = "SELECT count(*) `status` FROM `student_thesis` WHERE group_id=?";
+		db.getResult(sql, [id], function(result){
+
+			if(result.length > 0){
+				callback(result);
+			}else{
+				callback(null);
+			}
+		});
+	},
 	getByUname: function(name, callback){
 		var sql = "select * from sub_domain where subDom_name=?";
 		db.getResult(sql, [name], function(result){

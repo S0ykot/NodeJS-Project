@@ -36,7 +36,7 @@
        </li>
      </ul>
      <div class="actions mb-4">
-        <a class="mb-2 btn btn-sm btn-primary w-100 d-table mx-auto extra-action" href="/cngPass">
+        <a class="mb-2 btn btn-sm btn-primary w-100 d-table mx-auto extra-action" href="/studentCngPass">
           <i class="material-icons">lock</i> Change Password</a>
         <!--  <a class="mb-2 btn btn-sm btn-white w-100 d-table mx-auto extra-action" href="https://designrevision.com/docs/shards-dashboard-lite">
           <i class="material-icons">book</i> Documentation</a -->
@@ -186,7 +186,7 @@
                     <span class="d-none d-md-inline-block"><%=name%></span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="/home">
+                    <a class="dropdown-item" href="/studentHome">
                       <i class="material-icons">&#xE7FD;</i> Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="/logout">
@@ -245,10 +245,10 @@
                       <tbody>
                      <%for(var i = 0; i < user.length; i++){%>
                     <tr>
-                      <td><%=user[i].id%></td>
-                      <td><%=user[i].name%></td>
+                      <td><%=user[i].file_id%></td>
+                      <td><%=user[i].fileName%></td>
                       <td>
-                        <button class="btn btn-info" value="<%=user[i].name%>" onclick="download(this.value)"><i class="fas fa-eye" style="margin-right: 5px;margin-left: -5px"></i>Download</button>
+                        <button class="btn btn-info" value="<%=user[i].fileName%>" onclick="download(this.value)"><i class="fas fa-eye" style="margin-right: 5px;margin-left: -5px"></i>Download</button>
                       </td>
                    </tr>
                    <%}%>

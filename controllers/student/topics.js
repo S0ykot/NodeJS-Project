@@ -4,6 +4,9 @@ const studentTopic= require.main.require('./models/StudentTopicModel');
 const studentFaculty= require.main.require('./models/StudentFacultyModel');
 const studentDomain= require.main.require('./models/StudentDomainModel');
 const thesisType= require.main.require('./models/StudentThesisTypeModel');
+const studentGroup= require.main.require('./models/StudentGroupModel');
+const thesisApplied= require.main.require('./models/StudentThesisApplied');
+
 //const model_group= require.main.require('./models/model_group');
 
 router.get('*',function(req,res,next){
@@ -17,30 +20,63 @@ router.get('*',function(req,res,next){
 router.get('/',function(req,res){
 	if(req.cookies['username']!=null)
 	{
-		studentTopic.getAll(function(topicResults){
-			if(topicResults){
-				studentFaculty.getById(topicResults[0].fid, function(facultyResult){
-					if(facultyResult){
-						studentDomain.getById(topicResults[0].dom_id, function(domainResult){
-							if(domainResult){
-								thesisType.getById(topicResults[0].type_id, function(thesisTypeResult){
-									if(thesisTypeResult){
-										res.render('student/topics/index',{name:req.cookies['username'], user:topicResults, fac:facultyResult, dom:domainResult, type:thesisTypeResult});
-										console.log(facultyResult);
+		thesisApplied.getBySId(req.session.sid,function(check){
+			console.log('ABCD');
+			console.log(check);
+			if(check!=null){
+				studentTopic.getAll(function(topicResults){
+					if(topicResults){
+						studentFaculty.getById(topicResults[0].fid, function(facultyResult){
+							if(facultyResult){
+								studentDomain.getById(topicResults[0].dom_id, function(domainResult){
+									if(domainResult){
+										thesisType.getById(topicResults[0].type_id, function(thesisTypeResult){
+											if(thesisTypeResult){
+												res.render('student/topics/index',{name:req.cookies['username'], user:topicResults, fac:facultyResult, dom:domainResult, type:thesisTypeResult, check:1});
+												console.log(facultyResult);
+											}else{
+												res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:1});
+											}
+										});
 									}else{
-										res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null});
+										res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:1});
 									}
 								});
 							}else{
-								res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null});
+								res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:1});
 							}
 						});
 					}else{
-						res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null});
+						res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:1});
 					}
 				});
-			}else{
-				res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null});
+			}else if(check==null){
+				studentTopic.getAll(function(topicResults){
+					if(topicResults){
+						studentFaculty.getById(topicResults[0].fid, function(facultyResult){
+							if(facultyResult){
+								studentDomain.getById(topicResults[0].dom_id, function(domainResult){
+									if(domainResult){
+										thesisType.getById(topicResults[0].type_id, function(thesisTypeResult){
+											if(thesisTypeResult){
+												res.render('student/topics/index',{name:req.cookies['username'], user:topicResults, fac:facultyResult, dom:domainResult, type:thesisTypeResult, check:null});
+												console.log(facultyResult);
+											}else{
+												res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:null});
+											}
+										});
+									}else{
+										res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:null});
+									}
+								});
+							}else{
+								res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:null});
+							}
+						});
+					}else{
+						res.render('student/topics/index',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:null});
+					}
+				});
 			}
 		});
 		console.log('topic page requested!');
@@ -51,40 +87,118 @@ router.get('/',function(req,res){
 	}
 });
 
-/*router.get('/topicDetails/:id',function(req,res){
+router.get('/topicDetails/:id',function(req,res){
 	if(req.cookies['username']!=null)
 	{
-		model_topic.getById(req.params.id,function(results){
-		res.render('topics/topicDetails',{name:req.cookies['username'], user:results});
-		console.log(results);
+		thesisApplied.getBySId(req.session.sid,function(check){
+			console.log('ABCD');
+			console.log(check);
+			if(check!=null){
+				studentTopic.getById(req.params.id,function(topicResult){
+					studentFaculty.getById(topicResult.fid, function(facultyResult){
+						if(facultyResult){
+							studentDomain.getById(topicResult.dom_id, function(domainResult){
+								if(domainResult){
+									thesisType.getById(topicResult.type_id, function(thesisTypeResult){
+										if(thesisTypeResult){
+											res.render('student/topics/topicDetails',{name:req.cookies['username'], user:topicResult, fac:facultyResult, dom:domainResult, type:thesisTypeResult, check:1});
+											console.log(facultyResult);
+										}else{
+											res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:1});
+										}
+									});
+								}else{
+									res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:1});
+								}
+							});
+						}else{
+							res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:1});
+						}
+					});
+				});
+			}else if(check==null){
+				studentTopic.getById(req.params.id,function(topicResult){
+					studentFaculty.getById(topicResult.fid, function(facultyResult){
+						if(facultyResult){
+							studentDomain.getById(topicResult.dom_id, function(domainResult){
+								if(domainResult){
+									thesisType.getById(topicResult.type_id, function(thesisTypeResult){
+										if(thesisTypeResult){
+											res.render('student/topics/topicDetails',{name:req.cookies['username'], user:topicResult, fac:facultyResult, dom:domainResult, type:thesisTypeResult, check:null});
+											console.log(facultyResult);
+										}else{
+											res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:null});
+										}
+									});
+								}else{
+									res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:null});
+								}
+							});
+						}else{
+							res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null, check:null});
+						}
+					});
+				});
+			}
 		});
+		/*studentTopic.getById(req.params.id,function(topicResult){
+			studentFaculty.getById(topicResult.fid, function(facultyResult){
+				if(facultyResult){
+					studentDomain.getById(topicResult.dom_id, function(domainResult){
+						if(domainResult){
+							thesisType.getById(topicResult.type_id, function(thesisTypeResult){
+								if(thesisTypeResult){
+									res.render('student/topics/topicDetails',{name:req.cookies['username'], user:topicResult, fac:facultyResult, dom:domainResult, type:thesisTypeResult, check:0});
+									console.log(facultyResult);
+								}else{
+									res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null});
+								}
+							});
+						}else{
+							res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null});
+						}
+					});
+				}else{
+					res.render('student/topics/topicDetails',{name:req.cookies['username'], user:null, fac:null, dom:null, type:null});
+				}
+			});
+		});*/
 		console.log('topic page requested!');
 		
 		
 	}else{
 		res.redirect('/logout');
 	}
-});*/
+});
 
-/*router.get('/apply/:id',function(req,res){
+router.get('/apply/:id',function(req,res){
 	if(req.cookies['username']!=null)
 	{
-		model_group.getById(req.cookies['username'],function(results){
+		studentGroup.getById(req.params.id,function(results){
 		if(results==null){
-			res.render('createGroup/myGroup',{name:req.cookies['username'], user:results});
+			//res.render('createGroup/myGroup',{name:req.cookies['username'], user:results});
+			res.send('Wrong');
 		}else{
-			user={
-				topicId:req.params.id,
-				groupId:results[0].group_id
-			}
 			//console.log(user);
-			model_group.update(user,function(results){
-				if(results){
-					res.redirect('/group');
-				}else{
-					res.redirect('/topics');
+			studentGroup.getSem(function(result){
+				
+				user={
+					topicId:req.params.id,
+					groupId:results[0].group_id,
+					userid:req.session.sid,
+					semId:result.sem_id,
 				}
-			});
+				console.log(user);
+				studentGroup.insert(user,function(results){
+					if(results){
+						res.redirect('/studentResearch');
+						console.log(results);
+					}else{
+						res.redirect('/studentTopics');
+						console.log(results);
+					}
+				});
+			})
 		}
 		console.log(results);
 		});
@@ -94,7 +208,7 @@ router.get('/',function(req,res){
 	}else{
 		res.redirect('/logout');
 	}
-});*/
+});
 
 /*router.post('/',function(req,res){
 	if(req.cookies['username']!=null)

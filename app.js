@@ -15,6 +15,7 @@ var studentCngPass 	= require('./controllers/student/changePassword');
 var studentUpload 	= require('./controllers/student/upload');
 var studentDownload = require('./controllers/student/download');
 var availableTopics = require('./controllers/student/topics');
+var studentResearch = require('./controllers/student/myResearch');
 //var studentRegInfo 		= require('./controllers/student/regInfo');
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/studentCngPass', studentCngPass);
 app.use('/studentUpload', studentUpload);
 app.use('/studentDownload', studentDownload);
 app.use('/studentTopics', availableTopics);
+app.use('/studentResearch', studentResearch);
 //app.use('/studentRegInfo', studentRegInfo);
 app.use('/logout', logout);
 

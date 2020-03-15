@@ -5,22 +5,22 @@ $(document).ready(function(){
     });
 
     $('#apply').on('click',function applyTopic(){
-     	window.location='http://localhost:3000/topics';
+     	window.location='http://localhost:3000/studentTopics';
     });
 
     $('.details').on('click',function applyTopic(){
-     	window.location='http://localhost:3000/topics/topicDetails/'+$('.details').val();
+     	window.location='http://localhost:3000/studentTopics/topicDetails/'+$('.details').val();
     });
 
 
 });
 
 function goTo(value){
-	window.location='http://localhost:3000/topics/topicDetails/'+value;
+	window.location='http://localhost:3000/studentTopics/topicDetails/'+value;
 }
 
 function apply(value){
-    window.location='http://localhost:3000/topics/apply/'+value;
+    window.location='http://localhost:3000/studentTopics/apply/'+value;
 }
 
 function addMember(value){
@@ -36,5 +36,5 @@ function memberDetails(value){
 }
 
 function download(value){
-    window.location='http://localhost:3000/download/download/'+value;
+    window.location='http://localhost:3000/studentDownload/download/'+value;
 }

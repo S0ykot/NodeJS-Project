@@ -2,6 +2,7 @@ var express = require('express');
 var multer = require('multer');
 var path = require('path');
 const studentFile= require.main.require('./models/StudentFilesModel');
+const thesisApplied= require.main.require('./models/StudentThesisApplied');
 var router = express.Router();
 
 /*router.get('*',function(req,res,next){
@@ -109,7 +110,7 @@ router.post('/',upload,function(req,res,next)
 			      } 
 			      else
 			      {
-					studentFile.getById(req.session.sid,function(result){
+					thesisApplied.getBySId(req.session.sid,function(result){
 						if(result){
 							studentFile.insert({groupId: result.group_id, file: req.file.filename},function(results)
 						{

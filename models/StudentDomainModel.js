@@ -19,4 +19,15 @@ module.exports ={
 			}
 		});
 	},
+
+	getBySubId: function(id, callback){
+		var sql = "select * from domain_research where subDom_id=?";
+		db.getResult(sql, [id], function(result){
+			if(result){
+				callback(result);
+			}else{
+				callback(null);
+			}
+		});
+	},
 }
