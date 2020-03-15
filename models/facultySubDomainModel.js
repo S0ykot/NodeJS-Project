@@ -12,7 +12,7 @@ module.exports ={
 		});
 		},
 		details : function (id,callback) {
-			var sql = "Select * from sub_domain,domain_research,thesis_type where sub_domain.dom_id=domain_research.dom_id and thesis_type.type_id=sub_domain.type_id and sub_domain.fid=(select fid from faculty where faculty_id=?)";
+			var sql = "SELECT * FROM sub_domain,research_group,domain_research,thesis_type WHERE sub_domain.dom_id=domain_research.dom_id AND sub_domain.subDom_id=research_group.subDom_id AND thesis_type.type_id=sub_domain.type_id AND sub_domain.fid=(SELECT fid FROM faculty WHERE faculty.faculty_id=?) order by research_group.group_id ASC";
 			db.getResult(sql, [id], function(result){
 			if(result.length > 0){
 				callback(result);
@@ -30,8 +30,7 @@ module.exports ={
 				callback(null);
 			}
 		});
-		}
-
+		},
 
 
 		

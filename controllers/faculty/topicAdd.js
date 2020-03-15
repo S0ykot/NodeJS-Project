@@ -5,6 +5,7 @@ var thesisTypeModel = require.main.require('./models/facultyThesisTypeModel');
 var domainModel = require.main.require('./models/facultyDomainModel');
 var subdomainModel = require.main.require('./models/facultySubDomainModel');
 var facultyModel = require.main.require('./models/facultyFacultyModel');
+var researchGroupModel = require.main.require('./models/facultyResearchGroupModel');
 
 router.get('*', function(req, res, next){
 	if(req.cookies['token'] == null){
@@ -79,17 +80,24 @@ router.post('/',[
 		if (!errors.isEmpty())
 		{
 			res.send("null submission");
-			//res.redirect('/topicAdd');
 		}
 		else
 		{
 			subdomainModel.insert(data,function(status) {
 				if (status) {
-					res.send("Add");
+					researchGroupModel.insert(null,function(status1) {
+						if (status1) {
+							res.redirect('/viewTopic');
+						}
+						else
+						{
+							res.send("Somthing wrong. Please try again");
+						}
+					});
 				}
 				else
 				{
-					res.send("Failed");
+					res.send("Somthing wrong. Please try again");
 				}
 			})
 		}

@@ -194,22 +194,14 @@
                           <th scope="col" class="border-0">Topic Name</th>
                           <th scope="col" class="border-0">Progress</th>
                           <th scope="col" class="border-0">Semester</th>
-                          <th scope="col" class="border-0">Input</th>
-                          <th scope="col" class="border-0">Action</th>
                         </tr>
                         <%for(var i=0;i<data.length;i++){%>
                         <tr>
                           <td><%=data[i].group_id%></td>
-                          <td><%=data[i].subDom_name%></td>
-                          <td><%=data[i].thesis_progress%>%</td>
+                          <td><a href="/progressUpdate/update/<%=data[i].group_id%>"><%=data[i].subDom_name%></a></td>
+                          <td><label><%=data[i].thesis_progress%>%</label><br>
+                            <progress id="file" value="<%=data[i].thesis_progress%>" max="100"></progress></td>
                           <td><%=data[i].sem_name%></td>
-                          <td><input type="text" name="progress" value="<%=data[i].thesis_progress%>">
-                            <%if(error.progress){%>
-                              <b style="color: red;"><%= error.progress.msg%></b>
-                                <%}%>
-                              </td>
-                          
-                          <td><input type="submit" name="submit"></td>
                         </tr>
                         <%}%>
                       </thead>

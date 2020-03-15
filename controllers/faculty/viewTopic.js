@@ -19,19 +19,8 @@ router.get('/',function(req,res){
 			if (result==null) {
 				res.send('No Data found');
 			}
-			else
-			{
-				subdomainModel.groupID(req.cookies['username'],function(grp) {
-					if (grp==null) {
-						console.log("Null group");
-					}
-					else
-					{
-						console.log(grp);
-						res.render('faculty/viewTopic',{userid:req.cookies['username'],data:result,group:grp});
-					}
-					
-				});
+			else{
+					res.render('faculty/viewTopic',{userid:req.cookies['username'],data:result});
 				
 			}
 		});
@@ -41,7 +30,7 @@ router.get('/',function(req,res){
 router.get('/topicDetails/:id',function(req,res){
 		studentThesisModel.detailsByGroup(req.params.id,function(result) {
 			if (result==null) {
-				res.send('No data Found');
+				res.send(' <center><h1>No student applied in this group</h1></center>');
 			}
 			else
 			{
