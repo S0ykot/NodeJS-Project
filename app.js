@@ -25,7 +25,7 @@ var addteacher		= require('./controllers/admin/AdminTeacherReg');
 var topicList		= require('./controllers/admin/AdminTopicDetails');
 var addDomain		= require('./controllers/admin/AdminDomainAdd');
 var domainlist		= require('./controllers/admin/AdminDomainDetails');
-//var uploadFile		= require('./controllers/AdminUploadFile');
+var uploadFile		= require('./controllers/admin/AdminUploadFile');
 
 
 
@@ -61,7 +61,7 @@ app.use('/AdminTeacherReg',addteacher);
 app.use('/AdminTopicDetails',topicList);
 app.use('/AdminDomainAdd',addDomain);
 app.use('/AdminDomainDetails',domainlist); 
-//app.use('/AdminUploadFile',uploadFile);
+app.use('/AdminUploadFile',uploadFile);
 
 
 
