@@ -13,6 +13,13 @@ module.exports ={
 		});
 	},
 
+	getAllGroupsNumbers: function(callback){
+		var sql = "select * from research_group";
+		db.getResult(sql, null, function(result){
+			callback(result);
+		});
+	},		
+
 	addGroup: function(grp, callback){
 		var sql = "insert into research_group values(?,(select max(subDom_id) from sub_domain))";
 		db.execute(sql, [null], function(status){
