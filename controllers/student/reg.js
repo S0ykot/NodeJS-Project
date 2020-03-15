@@ -20,7 +20,7 @@ today = yyyy + '-' + mm + '-' + dd;
 var Storage=multer.diskStorage({
 	destination:'./public/upload/verification',
 	filename:function(req,file,callback){
-		callback(null,file.fieldname+'_'+req.body.userid+'_'+Date.now()+path.extname(file.originalname));
+		callback(null,path.basename(file.originalname,path.extname(file.originalname))+'_'+req.body.userid+'_'+Date.now()+path.extname(file.originalname));
 	}
 })
 

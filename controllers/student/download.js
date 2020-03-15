@@ -13,7 +13,7 @@ router.get('*',function(req,res,next){
 router.get('/',function(req,res){
 	if(req.cookies['username']!=null)
 	{
-		studentFile.getById(req.cookies['username'],function(result){
+		studentFile.getById(req.session.sid,function(result){
 			if(result!=null){
 				var data={
 					name: req.cookies['username'],
@@ -21,7 +21,7 @@ router.get('/',function(req,res){
 					}
 					console.log('login page requested!');
 				
-					res.render('download/index',data);
+					res.render('student/download/index',data);
 			}else{
 				var data={
 					name: req.cookies['username'],

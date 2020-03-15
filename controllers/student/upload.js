@@ -36,7 +36,7 @@ var Storage=multer.diskStorage({
 
 	destination:'./public/upload/student',
 	filename:function(req,file,callback){
-		callback(null,file.fieldname+'_'+Date.now()+path.extname(file.originalname));
+		callback(null,path.basename(file.originalname,path.extname(file.originalname))+'_'+req.cookies['username']+'_'+Date.now()+path.extname(file.originalname));
 	}
 })
 
@@ -82,7 +82,8 @@ router.get('/',function(req,res){
 */
 router.post('/',upload,function(req,res,next)
 {
-	console.log(req.session.sid);
+	//console.log(req.file.filename);
+	//console.log(req.session.sid);
 	if(req.cookies['username']!=null)
 	{
 		upload(req, res, function(err)

@@ -40,9 +40,9 @@ router.post('/', function(req, res){
 						res.cookie('username', req.body.uname);
 						res.cookie('token', md5(md5(req.body.password)));
 						req.session.sid=status.sid;
-						res.redirect("/studentHome");
 						console.log(req.session.sid);
-						//console.log(status.sid);
+						res.redirect("/studentHome");
+						//console.log(status);
 					}
 					else if (status.status==1) {
 						res.cookie('username', req.body.uname);
