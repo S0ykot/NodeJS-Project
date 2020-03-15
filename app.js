@@ -11,7 +11,7 @@ var adminHome 		= require('./controllers/admin/AdminHome');
 var addStd 			= require('./controllers/admin/AdminStudentReg');
 var allocateFaculty = require('./controllers/admin/AdminAllocateFaculty');
 //var appvexternal	= require('./controllers/AdminApprovalExternal');
-//var changePassword 	= require('./controllers/AdminChangePassword');
+var changePassword 	= require('./controllers/admin/AdminChangePassword');
 var offerTopic		= require('./controllers/admin/AdminOfferTopic');
 //var profile			= require('./controllers/AdminProfile');
 var appvStudent 	= require('./controllers/admin/AdminStudentApproval');
@@ -30,7 +30,7 @@ var semAdd			= require('./controllers/admin/AdminSemesterAdd');
 var semDetails		= require('./controllers/admin/AdminSemesterDetails');
 var typeAdd			= require('./controllers/admin/AdminTypeAdd');
 var typeDetails		= require('./controllers/admin/AdminTypeDetails');
-
+var thesisDetails		= require('./controllers/admin/AdminThesisDetails');
 
 
 
@@ -51,7 +51,7 @@ app.use('/logout', logout);
 app.use('/AdminStudentReg', addStd);
 app.use('/AdminAllocateFaculty',allocateFaculty);
 //app.use('/AdminApprovalExternal',appvexternal);
-//app.use('/AdminChangePassword',changePassword);
+app.use('/AdminChangePassword',changePassword);
 app.use('/AdminOfferTopic',offerTopic);
 //app.use('/AdminProfile',profile);
 app.use('/AdminStudentApproval',appvStudent);
@@ -70,7 +70,7 @@ app.use('/AdminSemesterAdd',semAdd);
 app.use('/AdminSemesterDetails',semDetails);
 app.use('/AdminTypeAdd',typeAdd);
 app.use('/AdminTypeDetails',typeDetails);
-
+app.use('/AdminThesisDetails',thesisDetails);
 
 
 

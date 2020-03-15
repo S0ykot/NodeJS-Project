@@ -56,4 +56,26 @@ module.exports ={
 		});
 	},
 
+	updatePassword: function(user, callback){
+		var sql = "update user set password=? where user_id_name=?";
+		db.execute(sql, [user.newpass, user.userid], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+	getPass: function (id,callback) {
+		var sql = "select password from user where user_id_name=?";
+		db.getResult(sql, [id], function(result){
+			if(result.length > 0){
+				callback(result);
+			}else{
+				callback(null);
+			}
+		});
+	},
+
 }

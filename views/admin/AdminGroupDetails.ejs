@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Topic List</title>
+    <title>Group Details</title>
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -187,7 +187,7 @@
                   <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
               </form>
               <ul class="navbar-nav border-left flex-row ">
-                <!-- <li class="nav-item border-right dropdown notifications">
+                <li class="nav-item border-right dropdown notifications">
                   <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="nav-link-icon__wrapper">
                       <i class="material-icons">&#xE7F4;</i>
@@ -221,7 +221,7 @@
                     </a>
                     <a class="dropdown-item notification__all text-center" href="#"> View all Notifications </a>
                   </div>
-                </li> -->
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <img class="user-avatar rounded-circle mr-2" src="/images/avatars/Admin.jpg" alt="User Avatar">
@@ -250,7 +250,7 @@
             <div class="page-header row no-gutters py-4">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Overview</span>
-                <h3 class="page-title">Topic Details</h3>
+                <h3 class="page-title">Students of Group <%= groupData[0].group_id %></h3>
               </div>
             </div>
             <!-- End Page Header -->
@@ -262,35 +262,55 @@
                     <h6 class="m-0">Active Users</h6>
                   </div> -->
                   <div class="card-body p-0 pb-3 text-center">
-                    <table class="table mb-0">
-                      <thead class="bg-light">
-                        <tr>
-                          <th scope="col" class="border-0">Topic Name</th>
-                          <th scope="col" class="border-0">Description</th>
-                          <th scope="col" class="border-0">Domain</th>
-                          <th scope="col" class="border-0">Supervisor</th>
-                          <th scope="col" class="border-0">Type</th>
-                          <th scope="col" class="border-0" colspan="2">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% for(var i=0; i < topiclist.length; i++){ %>
-      				        <tr>
-      				        	<td style="text-align: center;"><%= topiclist[i].subDom_name %></td>
-  				              	<td style="text-align: justify;"><%= topiclist[i].subDom_desc %></td>
-  					            <td><%= topiclist[i].dom_name %></td>
-  					            <td><%= topiclist[i].faculty_fname %> <%= topiclist[i].faculty_lname %></td>
-  					            <td><%= topiclist[i].type_name %></td>
-  					            <td>
-  									       <a style="background-color: AliceBlue;color: DodgerBlue;font-weight: bold;padding: 2px 3px;text-align: center;text-decoration: none;display: inline-block;border: 1px solid DodgerBlue;" href="/AdminTopicDetails/AdminTopicUpdate/<%= topiclist[i].subDom_id %>">Update</a> 
-  								      </td> 
-  								      <td>
-                           <a style="background-color: AliceBlue;color: DodgerBlue;font-weight: bold;padding: 2px 3px;text-align: center;text-decoration: none;display: inline-block;border: 1px solid DodgerBlue;" href="/AdminTopicDetails/AdminTopicDelete/<%= topiclist[i].subDom_id %>">Delete</a> 
-  						        </td>
-  						    </tr>
-					    <% } %>
-                      </tbody>
-                    </table>
+                    <form method="POST">
+                      <table class="table mb-0">
+                        <!-- <thead class="bg-light">
+                          <tr>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Criterion</th>
+                            <th scope="col" class="border-0" style="color: DodgerBlue;">Information</th>
+                          </tr>
+                        </thead> -->
+                        <tbody>
+                            <% for(var i=0; i < groupData.length; i++){ %>
+                            <tr>
+                                <td colspan="2" style="text-align: center;color: DodgerBlue">
+                                    Member No: <%= i+1 %>
+                                </td>
+                            </tr>
+                              <tr>
+                                <td>Student ID</td>
+                                <td><%= groupData[i].student_id %></td>
+                              </tr>
+
+                              <tr>
+                                <td>Student Name</td>
+                                <td><%= groupData[i].student_fname %> <%= groupData.student_lname %></td>
+                              </tr>
+
+                              <tr>
+                                <td>Student Email</td>
+                                <td><%= groupData[i].student_email %></td>
+                              </tr>
+
+                              <tr>
+                                <td>Student Contact</td>
+                                <td><%= groupData[i].student_contact %></td>
+                              </tr>
+
+                              <tr>
+                                <td>Student Department</td>
+                                <td><%= groupData[i].student_dept %></td>
+                              </tr>
+                            <%}%>
+
+                          <tr>
+                            <td colspan="2">
+                            	<a href="/AdminThesisDetails"><input type="button" name="back" value="Back"></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
                   </div>
                 </div>
               </div>
