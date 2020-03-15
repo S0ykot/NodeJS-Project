@@ -4,6 +4,7 @@ var teacherModel   				  = require.main.require('./models/AdminFacultyModel');
 var domainModel   				  = require.main.require('./models/AdminDomainModel');
 var subDomainModel 				  = require.main.require('./models/AdminSubDomainModel');
 var typeModel   				  = require.main.require('./models/AdminThesisTypeModel');
+var groupModel   				  = require.main.require('./models/AdminGroupModel');
 const { check, validationResult } = require('express-validator/check');
 
 router.get('*', function(req, res, next){
@@ -74,12 +75,20 @@ router.post('/', [
     	res.render('admin/AdminOfferTopic', {error:errors.mapped()});	
     }else{
 		subDomainModel.addSubDomain(topic, function(status){
-		console.log(status);
-		if (status) {
-			res.redirect('/AdminTopicDetails');
-		}else{
-			res.redirect('/AdminOfferTopic');
-		}
+			console.log(status);
+			if (status) {
+				groupModel.addGroup(null, function(status1){
+					console.log(status1);
+					if (status1) {
+						res.redirect('/AdminTopicDetails');
+					}else{
+						res.redirect('/AdminOfferTopic');
+					}
+						
+				});
+			}else{
+				res.redirect('/AdminOfferTopic');
+			}
 				
 		});
 	}
