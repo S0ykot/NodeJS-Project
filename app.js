@@ -28,6 +28,8 @@ var domainlist		= require('./controllers/admin/AdminDomainDetails');
 var uploadFile		= require('./controllers/admin/AdminUploadFile');
 var semAdd			= require('./controllers/admin/AdminSemesterAdd');
 var semDetails		= require('./controllers/admin/AdminSemesterDetails');
+var typeAdd			= require('./controllers/admin/AdminTypeAdd');
+var typeDetails		= require('./controllers/admin/AdminTypeDetails');
 
 
 
@@ -66,6 +68,10 @@ app.use('/AdminDomainDetails',domainlist);
 app.use('/AdminUploadFile',uploadFile);
 app.use('/AdminSemesterAdd',semAdd);
 app.use('/AdminSemesterDetails',semDetails);
+app.use('/AdminTypeAdd',typeAdd);
+app.use('/AdminTypeDetails',typeDetails);
+
+
 
 
 
