@@ -54,4 +54,12 @@ router.get('/download/:id',function (req,res) {
 	});
 });
 
+router.get('/inSearch/:key',function(req,res){
+	studentModel.inactiveStudentSearch(req.params.key,function(result) {
+		console.log(result);
+		res.render('faculty/ajaxInactiveStudDetails',{data:result});
+	});
+});
+
+
 module.exports = router;

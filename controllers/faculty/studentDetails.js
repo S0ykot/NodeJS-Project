@@ -27,4 +27,15 @@ router.get('/',function(req,res){
 	});
 });
 
+router.get('/search/:key',function(req,res){
+	studentModel.studentSearch(req.params.key,function(result) {
+		console.log(result);
+		res.render('faculty/ajaxStudDetails',{data:result});
+	});
+});
+
+
+
+
+
 module.exports = router;

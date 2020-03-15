@@ -41,4 +41,18 @@ module.exports ={
 			}
 		});
 		},
+
+		studentSearch: function (id,callback) {
+			var sql = "Select * from student where student_id like '%"+id+"%' or student_email like '%"+id+"%' or student_cgpa like '%"+id+"%' or student_dept like '%"+id+"%' or student_fname like '%"+id+"%' or student_lname like '%"+id+"%' ";
+			db.getResult(sql, null, function(result){
+				callback(result);
+		});
+		},
+
+		inactiveStudentSearch: function (id,callback) {
+			var sql = "SELECT * FROM student,verification WHERE student.sid in (SELECT sid from student WHERE status=0) AND verification.sid=student.sid AND student_id LIKE '%"+id+"%'";
+			db.getResult(sql, null, function(result){
+				callback(result);
+		});
+		}
 }

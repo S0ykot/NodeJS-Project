@@ -12,37 +12,27 @@
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="/styles/shards-dashboards.1.1.0.min.css">
     <link rel="stylesheet" href="/styles/extras.1.1.0.min.css">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script type="text/javascript">
+      function find(){
+      var key = document.getElementById('search').value;
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "http://localhost:3000/studentDetails/search/"+key, true);
+      xhttp.send();
+        xhttp.onreadystatechange = function() {
+          if (this.status==404) {
+            document.getElementById('test').innerHTML="No Data Found";
+          }
+          else
+          {
+            if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('test').innerHTML = this.responseText;
+          }
+          }
+        };
+    }
+    </script>
   </head>
   <body class="h-100">
-    <!-- <div class="color-switcher animated">
-      <h5>Accent Color</h5>
-      <ul class="accent-colors">
-        <li class="accent-primary active" data-color="primary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-secondary" data-color="secondary">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-success" data-color="success">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-info" data-color="info">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-warning" data-color="warning">
-          <i class="material-icons">check</i>
-        </li>
-        <li class="accent-danger" data-color="danger">
-          <i class="material-icons">check</i>
-        </li>
-      </ul>
-      <div class="close">
-        <i class="material-icons">close</i>
-      </div>
-    </div>
-    <div class="color-switcher-toggle animated pulse infinite">
-      <i class="material-icons">settings</i>
-    </div> -->
     <div class="container-fluid">
       <div class="row">
         <!-- Main Sidebar -->
@@ -77,18 +67,6 @@
                   <span>Dashboard</span>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminTeacherReg">
-                  <i class="material-icons">note_add</i>
-                  <span>Add Faculty</span>
-                </a>
-              </li> -->
-              <!-- <li class="nav-item">
-                <a class="nav-link " href="/AdminTeacherDetails">
-                  <i class="material-icons">vertical_split</i>
-                  <span>Faculty List</span>
-                </a>
-              </li> -->
               <li class="nav-item">
                 <a class="nav-link " href="/studentReg">
                   <i class="material-icons">note_add</i>
@@ -224,15 +202,16 @@
                 <h3 class="page-title">Student Details</h3>
               </div>
             </div>
+            <div class="input-group input-group-seamless ml-3">
+              <input id="search" class="navbar-search form-control" type="text" placeholder="Search Student" aria-label="Search" onkeyup="find()"></div>
+              <br>
             <!-- End Page Header -->
             <!-- Default Light Table -->
+            
             <div class="row">
               <div class="col">
                 <div class="card card-small mb-4">
-                  <!-- <div class="card-header border-bottom">
-                    <h6 class="m-0">Active Users</h6>
-                  </div> -->
-                  <div class="card-body p-0 pb-3 text-center">
+                  <div class="card-body p-0 pb-3 text-center" id="test">
                     <table class="table mb-0">
                        <thead class="bg-light"></thead>
                       <thead class="bg-light">
@@ -275,66 +254,7 @@
                 </div>
               </div>
             </div>
-            <!-- End Default Light Table -->
-            <!-- Default Dark Table -->
-           <!--  <div class="row">
-              <div class="col">
-                <div class="card card-small overflow-hidden mb-4">
-                  <div class="card-header bg-dark">
-                    <h6 class="m-0 text-white">Inactive Users</h6>
-                  </div>
-                  <div class="card-body p-0 pb-3 bg-dark text-center">
-                    <table class="table table-dark mb-0">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th scope="col" class="border-bottom-0">#</th>
-                          <th scope="col" class="border-bottom-0">First Name</th>
-                          <th scope="col" class="border-bottom-0">Last Name</th>
-                          <th scope="col" class="border-bottom-0">Country</th>
-                          <th scope="col" class="border-bottom-0">City</th>
-                          <th scope="col" class="border-bottom-0">Phone</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Graham</td>
-                          <td>Brent</td>
-                          <td>Benin</td>
-                          <td>Ripabottoni</td>
-                          <td>1-512-760-9094</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Clark</td>
-                          <td>Angela</td>
-                          <td>Estonia</td>
-                          <td>Borghetto di Vara</td>
-                          <td>1-660-850-1647</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Wylie</td>
-                          <td>Joseph</td>
-                          <td>Korea, North</td>
-                          <td>Guelph</td>
-                          <td>325-4351</td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Garth</td>
-                          <td>Clementine</td>
-                          <td>Indonesia</td>
-                          <td>Narcao</td>
-                          <td>722-8264</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- End Default Dark Table -->
+            
           </div>
           <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
             
