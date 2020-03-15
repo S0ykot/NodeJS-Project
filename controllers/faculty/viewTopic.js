@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const path = require('path');
 var subdomainModel = require.main.require('./models/facultySubDomainModel');
 var studentThesisModel = require.main.require('./models/facultyStudentThesisModel');
+var fileModel = require.main.require('./models/facultyFileModel');
 
 router.get('*', function(req, res, next){
 	if(req.cookies['token'] == null){
@@ -40,7 +42,16 @@ router.get('/topicDetails/:id',function(req,res){
 					}
 					else
 					{
-						res.render('faculty/topicDetails',{userid:req.cookies['username'],data:result,id:(req.params.id)-1,data1:student});
+						fileModel.groupByfiles(req.params.id,function(up_file) {
+							if (result==null) {
+								res.render('faculty/topicDetails',{userid:req.cookies['username'],data:result,id:(req.params.id)-1,data1:student});
+							}
+							else
+							{
+								res.render('faculty/topicDetails',{userid:req.cookies['username'],data:result,id:(req.params.id)-1,data1:student,files:up_file});
+							}
+						});
+						
 					}
 					
 				});
@@ -50,6 +61,12 @@ router.get('/topicDetails/:id',function(req,res){
 		
 });
 
+router.get('/download/:file(*)',function(req,res){
 
+		 var file = req.params.file;
+		 var fileLocation = path.join('./public/upload/faculty',file);
+		 console.log(fileLocation);
+		 res.download(fileLocation, file);
+});
 
 module.exports = router;

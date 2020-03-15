@@ -244,7 +244,7 @@
 
                             <%for(var i=0;i<data.length;i++){%>
                             <tr>
-                              <td><%=data[i].student_id%></td>
+                              <td><a href="/studentApproval/download/<%=data[i].ver_id%>"><%=data[i].student_id%></a></td>
                               <td><%=data[i].student_fname%></td>
                               <td><%=data[i].student_lname%></td>
                               <td><%=data[i].student_email%></td>

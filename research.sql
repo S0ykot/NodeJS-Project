@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2020 at 10:53 PM
+-- Generation Time: Mar 15, 2020 at 10:57 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -75,7 +75,7 @@ INSERT INTO `faculty` (`fid`, `faculty_id`, `faculty_fname`, `faculty_lname`, `f
 
 CREATE TABLE `file` (
   `file_id` int(11) NOT NULL,
-  `fileName` varchar(30) NOT NULL,
+  `fileName` varchar(200) NOT NULL,
   `group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,7 +87,29 @@ INSERT INTO `file` (`file_id`, `fileName`, `group_id`) VALUES
 (1, 'abc.pdf', 1),
 (2, 'fgh.pdf', 1),
 (3, 'qwe.doc', 2),
-(4, 'poi.docs', 2);
+(4, 'poi.docs', 2),
+(5, 'aima3e-algorithms (1)__1701-1751-2__2020-3-16.pdf', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `research_group`
+--
+
+CREATE TABLE `research_group` (
+  `group_id` int(11) NOT NULL,
+  `subDom_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `research_group`
+--
+
+INSERT INTO `research_group` (`group_id`, `subDom_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -155,7 +177,9 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`sid`, `student_id`, `student_fname`, `student_lname`, `student_email`, `student_contact`, `student_credit`, `student_cgpa`, `student_regDate`, `student_dept`, `status`) VALUES
 (1, '17-33956-1', 'Khandakar Anim Hassan', 'Adnan', 'adnan@gmail.com', '12345678912', 100, 3.99, '2020-03-11', 'CSE', 1),
 (2, '17-33960-1', 'Md Atick Eashrak', 'Shuvo', 'shuvo@yahoo.com', '79845612312', 120, 3.9, '2020-03-11', 'CS', 1),
-(3, '18-33999-1', 'Rahim', 'mia', 'rahim@gmail.com', '45845785487', 125, 3.66, '2020-3-13', 'CS', 1);
+(3, '18-33999-1', 'Rahim', 'mia', 'rahim@gmail.com', '45845785487', 125, 3.66, '2020-3-13', 'CS', 1),
+(4, '20-99545-1', 'Kuddu', 'Mia', 'kuddus@gmail.com', '2458754784', 120, 3.77, '2020-03-11', 'CS', 0),
+(5, '19-65854-3', 'Samia', 'Akter', 'samia@gmail.com', '5987547845', 130, 3.95, '2020-02-12', 'CS', 0);
 
 -- --------------------------------------------------------
 
@@ -179,9 +203,9 @@ CREATE TABLE `student_thesis` (
 --
 
 INSERT INTO `student_thesis` (`thesis_id`, `group_id`, `sid`, `sem_id`, `subDom_id`, `external`, `thesis_progress`, `ext_status`) VALUES
-(1, 1, 1, 1, 1, 'MOHAIMEN BIN NOOR', 1, 1),
-(2, 1, 2, 1, 1, 'MOHAIMEN BIN NOOR', 1, 1),
-(3, 2, 3, 1, 2, 'MOHAIMEN BIN NOOR', 0, 1);
+(1, 1, 1, 1, 1, 'MOHAIMEN BIN NOOR', 100, 1),
+(2, 1, 2, 1, 1, 'MOHAIMEN BIN NOOR', 100, 1),
+(3, 2, 3, 1, 2, 'MOHAIMEN BIN NOOR', 50, 1);
 
 -- --------------------------------------------------------
 
@@ -205,7 +229,8 @@ CREATE TABLE `sub_domain` (
 INSERT INTO `sub_domain` (`subDom_id`, `subDom_name`, `subDom_desc`, `type_id`, `dom_id`, `fid`) VALUES
 (1, 'Food Management System', 'IOS and android', 2, 3, 1),
 (2, 'Agent Robot', 'Arduno', 2, 4, 1),
-(3, 'Doctor\'s Hub', 'About doctor', 2, 3, 1);
+(3, 'Doctor\'s Hub', 'About doctor', 2, 3, 1),
+(4, 'Missile destroy', 'data analysis', 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -261,9 +286,17 @@ INSERT INTO `user` (`uid`, `user_id_name`, `password`, `rid`) VALUES
 
 CREATE TABLE `verification` (
   `ver_id` int(11) NOT NULL,
-  `ver_fileName` varchar(30) NOT NULL,
+  `ver_fileName` varchar(100) NOT NULL,
   `sid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `verification`
+--
+
+INSERT INTO `verification` (`ver_id`, `ver_fileName`, `sid`) VALUES
+(1, '20-99545-1.pdf', 4),
+(2, '19-65854-3.pdf', 5);
 
 --
 -- Indexes for dumped tables
@@ -286,6 +319,13 @@ ALTER TABLE `faculty`
 --
 ALTER TABLE `file`
   ADD PRIMARY KEY (`file_id`);
+
+--
+-- Indexes for table `research_group`
+--
+ALTER TABLE `research_group`
+  ADD PRIMARY KEY (`group_id`),
+  ADD KEY `subDom_id` (`subDom_id`);
 
 --
 -- Indexes for table `role`
@@ -363,7 +403,13 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `research_group`
+--
+ALTER TABLE `research_group`
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -381,7 +427,7 @@ ALTER TABLE `semester`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `student_thesis`
@@ -393,7 +439,7 @@ ALTER TABLE `student_thesis`
 -- AUTO_INCREMENT for table `sub_domain`
 --
 ALTER TABLE `sub_domain`
-  MODIFY `subDom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `subDom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `thesis_type`
@@ -411,11 +457,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `verification`
 --
 ALTER TABLE `verification`
-  MODIFY `ver_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ver_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `research_group`
+--
+ALTER TABLE `research_group`
+  ADD CONSTRAINT `research_group_ibfk_1` FOREIGN KEY (`subDom_id`) REFERENCES `sub_domain` (`subDom_id`);
 
 --
 -- Constraints for table `sub_domain`

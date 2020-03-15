@@ -242,6 +242,19 @@
                         </tr>
                         <%}%>
                       </tbody>
+                      <tbody>
+                        <br><hr>
+                        <tr>
+                          <th colspan="4"><h2>Files<h2></th>
+                        </tr>
+                        <%if(files){%>
+                          <%for(var i=0;i<files.length;i++){%>
+                          <tr>
+                            <td colspan="3"><a href="/viewTopic/download/<%=files[i].fileName%>"><%=files[i].fileName%></a></td>
+                          </tr>
+                          <%}%>
+                        <%}%>
+                      </tbody>
                     </table>
                   </div>
                 </div>

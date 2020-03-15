@@ -31,7 +31,16 @@ module.exports ={
 			}
 		});
 		},
-
+		groupWise : function (id,callback) {
+			var sql = "SELECT * FROM research_group,sub_domain,thesis_type WHERE research_group.subDom_id=sub_domain.subDom_id AND thesis_type.type_id=sub_domain.type_id AND sub_domain.fid=(SELECT fid FROM faculty WHERE faculty.faculty_id=?)";
+			db.getResult(sql, [id], function(result){
+			if(result.length > 0){
+				callback(result);
+			}else{
+				callback(null);
+			}
+		});
+		}
 
 		
 }

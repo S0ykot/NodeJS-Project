@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const path = require('path');
 var studentModel	= require.main.require('./models/facultyStudentModel');
+var verificationModel	= require.main.require('./models/facultyVerificationModel');
 
 
 router.get('*', function(req, res, next){
@@ -42,6 +44,14 @@ router.get('/approve/:id',function (req,res) {
 
 });
 
-
+router.get('/download/:id',function (req,res) {
+	var id = req.params.id;
+	verificationModel.getVeriFiles(id,function(result) {
+		var file = result.ver_fileName;
+		  var fileLocation = path.join('./public/upload/verification',file);
+		  console.log(fileLocation);
+		  res.download(fileLocation, file);
+	});
+});
 
 module.exports = router;

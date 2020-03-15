@@ -39,7 +39,7 @@ app.use('/studentApproval', facultyStudentApproval);
 app.use('/studentReg', facultyStudentReg);
 app.use('/studentReg', facultyStudentReg);
 app.use('/topicAdd', facultyTopicAdd);
-app.use('/uploadFile', facultyFileUpdate);
+app.use('/uploadFiles', facultyFileUpdate);
 app.use('/viewTopic', facultyViewTopic);
 app.use('/progressUpdate', facultyProgressUpdate);
 

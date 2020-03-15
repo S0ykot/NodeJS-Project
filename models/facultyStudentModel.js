@@ -12,7 +12,7 @@ module.exports ={
 		});
 		},
 		inactiveStudentDetails : function (id,callback) {
-			var sql = "Select * from student where status=0";
+			var sql = "SELECT * from student,verification WHERE student.sid=verification.sid AND student.status=0";
 			db.getResult(sql, null, function(result){
 			if(result.length > 0){
 				callback(result);
@@ -40,5 +40,5 @@ module.exports ={
 				callback(false);
 			}
 		});
-		}
+		},
 }
