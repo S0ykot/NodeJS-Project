@@ -180,7 +180,32 @@ router.get('/apply/:id',function(req,res){
 			res.send('Wrong');
 		}else{
 			//console.log(user);
-			studentGroup.getSem(function(result){
+			studentGroup.checkById(req.params.id,function(status){
+				if(status[0].status<4){
+					studentGroup.getSem(function(result){
+				
+						user={
+							topicId:req.params.id,
+							groupId:results[0].group_id,
+							userid:req.session.sid,
+							semId:result.sem_id,
+						}
+						console.log(user);
+						studentGroup.insert(user,function(results){
+							if(results){
+								res.redirect('/studentResearch');
+								console.log(results);
+							}else{
+								res.redirect('/studentTopics');
+								console.log(results);
+							}
+						});
+					})
+				}else{
+					res.send('Something Wrong');
+				}
+			})
+			/*studentGroup.getSem(function(result){
 				
 				user={
 					topicId:req.params.id,
@@ -198,7 +223,7 @@ router.get('/apply/:id',function(req,res){
 						console.log(results);
 					}
 				});
-			})
+			})*/
 		}
 		console.log(results);
 		});

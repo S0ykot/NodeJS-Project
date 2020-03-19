@@ -16,6 +16,7 @@ var studentUpload 	= require('./controllers/student/upload');
 var studentDownload = require('./controllers/student/download');
 var availableTopics = require('./controllers/student/topics');
 var studentResearch = require('./controllers/student/myResearch');
+var studentGroup = require('./controllers/student/group');
 //var studentRegInfo 		= require('./controllers/student/regInfo');
 var app = express();
 
@@ -39,6 +40,7 @@ app.use('/studentUpload', studentUpload);
 app.use('/studentDownload', studentDownload);
 app.use('/studentTopics', availableTopics);
 app.use('/studentResearch', studentResearch);
+app.use('/studentGroup', studentGroup);
 //app.use('/studentRegInfo', studentRegInfo);
 app.use('/logout', logout);
 

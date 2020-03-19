@@ -85,14 +85,14 @@
             <div class="input-group input-group-seamless ml-3">
               <div class="input-group-prepend">
                 <div class="input-group-text">
-                  
+               
                 </div>
               </div>
-              <input class="navbar-search form-control" type="text"  aria-label="Search"> </div>
+              <input class="navbar-search form-control" type="text" aria-label="Search"> </div>
           </form>
           <div class="nav-wrapper">
             <ul class="nav flex-column">
-              <li class="nav-item">
+               <li class="nav-item">
                 <a class="nav-link active" href="/studentHome">
                   <i class="material-icons">home</i>
                   <span>Dashboard</span>
@@ -149,7 +149,7 @@
                       
                     </div>
                   </div>
-                  <input class="navbar-search form-control" type="text"  aria-label="Search"> </div>
+                  <input class="navbar-search form-control" type="text" aria-label="Search"> </div>
               </form>
               <ul class="navbar-nav border-left flex-row ">
                 <!--  <li class="nav-item border-right dropdown notifications">
@@ -189,7 +189,7 @@
                 </li -->
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle mr-2" src="images/avatars/0.jpg" alt="User Avatar">
+                    <img class="user-avatar rounded-circle mr-2" src="/images/avatars/0.jpg" alt="User Avatar">
                     <span class="d-none d-md-inline-block"><%=name%></span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
@@ -211,144 +211,58 @@
           <div class="page-header row no-gutters py-4" style="margin-left: 10px">
               <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
                 <span class="text-uppercase page-subtitle">Overview</span>
-                <h3 class="page-title">My Research</h3>
+                <h3 class="page-title">My Group</h3>
               </div>
             </div>
         
           <!-- / .main-navbar -->
-          <%if(thesisResult==null){%>
-          <center>
-               <div >
-                  <div>
-                    <div class="card card-small mb-4 pt-3">
-                      <div class="card-header border-bottom text-center">
-                        
-                          <h3 class="page-title" style="margin-bottom: 50px">YOU ARE NOT ENROLLED IN ANY TOPIC YET!!</h3>
-                          <button class="btn btn-accent" id="apply">Click to Apply</button>
-                       
-                      </div>
-                     
-                    </div>
+                  <div class="row">
+              <div class="col">
+                <div class="card card-small mb-4">
+                  <!-- <div class="card-header border-bottom">
+                    <h6 class="m-0">Active Users</h6>
+                  </div> -->
+                  <div class="card-body p-0 pb-3 text-center">
+                    <table class="table mb-0">
+                      <thead class="bg-light">
+                        <tr>
+                          <th scope="col" class="border-0">Group ID</th>
+                          <th scope="col" class="border-0">User ID</th>
+                          <th scope="col" class="border-0">Name</th>
+                          <th scope="col" class="border-0">Email</th>
+                          <th scope="col" class="border-0">Contact</th>
+                          <th scope="col" class="border-0">Department</th>
+                          <!--  <th scope="col" class="border-0">Topic ID</th>
+                          <th scope="col" class="border-0">Topic Name</th>
+                          <th scope="col" class="border-0">Supervisor</th>
+                          <th scope="col" class="border-0">Status</th>
+                          <th scope="col" class="border-0">Action</th -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <%for(var i = 0; i < user.length; i++){%>
+                    <tr>
+                      <td><%=user[i].group_id%></td>
+                      <td><%=user[i].student_id%></td>
+                      <td><%=user[i].student_fname%>&nbsp;<%=user[i].student_lname%></td>
+                      <td><%=user[i].student_email%></td>
+                      <td><%=user[i].student_contact%></td>
+                      <td><%=user[i].student_dept%></td>
+                   </tr>
+                   <%}%>
+                   <!--   <tr>
+                     <td colspan="5"></td>
+                     <td><button class="btn btn-accent" value="<%=user.group_id%>" onclick="addMember(this.value)">Add Member</button></td>
+                                      </tr -->
+                    
+                   </tbody>
+                    </table>
                   </div>
-                  
-                </div>
-            </main>
-          </div>
-        </div>
-         </center>
-         <%}else{%>
-          <center>
-           <div >
-              <div>
-                <div class="card card-small mb-4 pt-3">
-                  <div class="card-header border-bottom">
-                   
-                    <h4 class="mb-0">&ensp;</h4>
-                    <h6 class="mb-0"></h6>
-                    <div style="width: 100%;margin-left: 100px; margin-left: -10px;" class="rw">
-                      <table border="0px" width="100%">
-                        <tr>
-                          <td colspan="3" height="30px"></td>
-                        </tr>
-                          <td width="100px"></td>
-                          <td width="200px">Group ID</td>
-                          <td>:</td>
-                          <td><%=thesisResult.group_id%></td>
-                          <td width="20px"></td>
-                        </tr>
-                       <tr>
-                         <td width="100px"></td>
-                         <td width="200px" style="vertical-align: top">Topic Name</td>
-                         <td style="vertical-align: top">:</td>
-                         <td><%=subDomResults.subDom_name%></td>
-                         <td width="20px"></td>
-                       </tr>
-                       <tr>
-                         <td width="100px"></td>
-                         <td width="200px" style="vertical-align: top">Topic Description</td>
-                         <td style="vertical-align: top">:</td>
-                         <td><%=subDomResults.subDom_desc%></td>
-                         <td width="20px"></td>
-                       </tr>
-                       <tr>
-                         <td width="100px"></td>
-                         <td width="200px">Domain</td>
-                         <td>:</td>
-                         <td><%=domainResult[0].dom_name%></td>
-                         <td width="20px"></td>
-                       </tr>
-                       
-                       <tr>
-                         <td width="100px"></td>
-                         <td width="200px">Supervisor</td>
-                         <td>:</td>
-                         <td><%=facultyResult[0].faculty_fname%>&nbsp;<%=facultyResult[0].faculty_fname%></td>
-                         <td width="20px"></td>
-                       </tr>
-                       <%if(thesisResult.external==null){%>
-                        <tr>
-                          <td width="100px"></td>
-                          <td width="200px">Supervisor</td>
-                          <td>:</td>
-                          <td>Not Appointed Yet</td>
-                          <td width="20px"></td>
-                        </tr>
-                      <%}else{%>
-                        <tr>
-                          <td width="100px"></td>
-                          <td width="200px">Supervisor</td>
-                          <td>:</td>
-                          <td><%=thesisResult.external%></td>
-                          <td width="20px"></td>
-                        </tr>
-                        <%}%>
-                       
-                        <tr>
-                         <td width="100px"></td>
-                         <td width="200px">Type</td>
-                         <td>:</td>
-                         <td><%=typeResult[0].type_name%></td>
-                         <td width="20px"></td>
-                       </tr>
-
-                       <tr>
-                        <td width="100px"></td>
-                        <td width="200px">Progress</td>
-                        <td>:</td>
-                        <td><progress id="file" value="<%=thesisResult.thesis_progress%>" max="100" style='margin-top: 10px;'></progress><div style="margin-top: 5px;float: right;margin-right: 510px;">(<%=thesisResult.thesis_progress%>%)</div></td>
-                        <td width="20px"></td>
-                      </tr>
-                        
-                        <tr >
-                          <td width="100px"></td>
-                          <td style="padding-bottom:50px" width="200px"></td>
-                          <td></td>
-                          <td></td>
-                          <td width="20px"></td>
-                        </tr>
-                        <tr>
-                          <td width="100px"></td>
-                          <td width="230px"><button class="btn btn-info" value="<%=name%>" onclick="groupDetails(this.value)">Group Details</button>&emsp;<button class="btn btn-danger goHome">Go Home</button></td>
-                          <td></td>
-                          <td></td>
-                          <td width="20px"></td>
-                        </tr>
-                         <tr>
-                          <td colspan="3" height="67px"></td>
-                        </tr>
-                      </table>
-                    </div>
-                  </div>
-                 
                 </div>
               </div>
-              
             </div>
-                 </main>
-               </div>
-             </div>
-         </center>
-         <%}%>
+                  
+                
          <!--  <center>
            <div >
               <div>

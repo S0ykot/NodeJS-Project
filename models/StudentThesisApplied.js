@@ -6,7 +6,7 @@ module.exports ={
 		db.getResult(sql, [userid], function(result){
 
 			if(result.length > 0){
-				callback(result);
+				callback(result[0]);
 			}else{
 				callback(null);
 			}

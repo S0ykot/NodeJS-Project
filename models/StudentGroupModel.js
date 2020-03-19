@@ -12,6 +12,18 @@ module.exports ={
 			}
 		});
 	},
+
+	checkById: function(userid, callback){
+		var sql = "SELECT subDom_id,COUNT(*) `status` FROM `student_thesis` WHERE subDom_id=?";
+		db.getResult(sql, [userid], function(result){
+
+			if(result.length > 0){
+				callback(result);
+			}else{
+				callback(null);
+			}
+		});
+	},
 	getByGroupId: function(userid, callback){
 		var sql = "select * from research_group where group_id=(select group_id from research_group where subDom_id=?)";
 		db.getResult(sql, [userid], function(result){
@@ -43,6 +55,17 @@ module.exports ={
 			}
 		});
 	},
+	getGroupInfo:function(sid,callback){
+		var sql = "SELECT * FROM `student_thesis`,`student` WHERE student_thesis.sid=student.sid and student_thesis.subDom_id=?";
+		db.getResult(sql, [sid], function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback(null);
+			}
+		});
+	},
+
 	getSem:function(callback){
 		var sql = "SELECT * FROM `semester` WHERE sem_status=1 ORDER BY sem_id desc LIMIT 1";
 		db.getResult(sql, null, function(result){

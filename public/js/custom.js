@@ -28,7 +28,7 @@ function addMember(value){
 }
 
 function groupDetails(value){
-    window.location='http://localhost:3000/group';
+    window.location='http://localhost:3000/studentGroup';
 }
 
 function memberDetails(value){

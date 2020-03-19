@@ -44,9 +44,12 @@ router.post('/',
 	check('student_lname','Last Name is Empty').not().isEmpty(),
 	check('student_email','Email is Empty').not().isEmpty(),
 	check('student_dept','Department is Empty').not().isEmpty(),
+	check('student_dept','Invalid Department').not().isNumeric(),
 	check('student_cgpa','CGPA is Empty').not().isEmpty(),
 	check('student_credit','Credit is Empty').not().isEmpty(),
+	check('student_credit','Invalid Credit').isNumeric(),
 	check('student_contact','Contact Number is Empty').not().isEmpty(),
+	check('student_contact','Invalid Contact').isNumeric(),
 	check('student_regDate','Registration Date is Empty').not().isEmpty()
 	],function(req,res){
 	if(req.cookies['username']!=null)
